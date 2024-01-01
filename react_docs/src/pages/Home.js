@@ -8,7 +8,7 @@ export function Home(){
             <nav style={{display:"block"}}>
                 <Link to="/gallery" className="nav-link" >Gallery</Link>
                 <Link to="/JSX with curly braces" className="nav-link">JavaScript in JSX with curly braces</Link>
-                <Link to="/JSX with curly braces" className="nav-link">Pasing Props</Link>
+                <Link to="/passing props" className="nav-link">Pasing Props</Link>
 
             </nav>
         </div>
