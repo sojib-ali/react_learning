@@ -1,56 +1,81 @@
-import { useState, useEffect } from 'react';
-import Navbar from './components/Navbar';
+import { useState, useEffect, useReducer, useMemo } from 'react';
+
 import Card from "./components/Card";
-import UploadForm from "./components/UploadForm";
+import Layout from './components/Layout';
 import './App.css';
 
-const photos=[
-  'https://picsum.photos/id/1001/200/200',
-]
+const photos=[]
+const initialState={
+    items: photos,
+    count: photos.length,
+    inputs: {title:null, file:null, path:null},
+    isCollapsed: false
+}
+const handleOnChange=(state, e)=>{
+  if(e.target.name === 'file'){
+    return{...state.inputs, file: e.target.files[0], path:URL.createObjectURL(e.target.files[0])};
+  }else{
+    return{...state.inputs,title:e.target.value};
+  }
+}
+
+function reducer(state, action){
+  switch(action.type){
+    case 'setItem':
+      return{
+        ...state,
+        items:[state.inputs, ...state.items],
+        count: state.items.length+1,
+        inputs:{title:null, file:null, path:null}
+      }
+
+    case 'setInputs':
+      return{
+        ...state,
+        inputs:handleOnChange(state, action.payload.value)
+      }
+    case 'collapse':
+      return{
+        ...state,
+        isCollapsed: action.payload.bool
+      }
+      default: return state;
+  }
+}
 
 function App() {
-  const [count, setCount]=useState();
-  const [inputs, setInput]=useState({title:null, file:null, path:null});
-  const [items, setItems]=useState(photos);
-  const [isCollapsed, collapse]= useState(false);
+  const [state, dispatch]= useReducer(reducer,initialState);
 
-  const toggle=()=> collapse(!isCollapsed);
-  const handleOnChange=(e)=>{
-    if(e.target.name === 'file'){
-      setInput({...inputs, file: e.target.files[0], path:URL.createObjectURL(e.target.files[0])},);
-    }else{
-      setInput({...inputs,title:e.target.value});
-    }
-  }
+  
+
+  const toggle=(bool)=> dispatch({type: "collapse", payload:{bool}});
+  const handleOnChange=(e)=> dispatch({type: 'setInputs', payload: {value:e}});
  
   const handleOnSubmit=(e)=>{
     e.preventDefault();
-    setItems([inputs.path, ...items]);
+    dispatch({type: 'setItem'});
+    toggle(!state.isCollapsed);
   }
-  useEffect(()=>{
-    setCount(`You have ${items.length} image${items.length > 1 ? 's' : " " }`)
-  },[items]);
+
+  const count=useMemo(()=>{
+    return `You have ${state.items.length} image${state.items.length > 1 ? 's' : " " }`
+  },[state.items]);
 
   return (
-    <>
-      <Navbar />
-      <div class="container text-center mt-5">
-      {/* <button className="btn btn-warning" onClick={() => setItems(['https://picsum.photos/id/1008/200/200', ...items])}> +Add</button><br /> */}
-        <button className='btn btn-success float-end' onClick={toggle} >{isCollapsed ? 'Close':'Add'}</button>
-        <div className='clearfix mb-4'></div>
-        <UploadForm 
-        isVisible={isCollapsed}
-        onChange={handleOnChange}
-        onSubmit={handleOnSubmit}
-        />
+    <Layout
+    state={state}
+    onChange={handleOnChange}
+    onSubmit={handleOnSubmit}
+    toggle={toggle}
+    >
         {count}
-        <h1 className='clearfix mb-4'>Gallery</h1>
+        <h1 className='text-center'>Gallery</h1>
         <div className='row'>
           {/* {Array.apply(null,{length: 9}).map(()=> <Card />)} */}
-          {items.map((photo)=> <Card src={photo}/>)}
+          {state.items.map((item, index)=> <Card key={index} {...item}/>)}
         </div>
-      </div>
-    </>
+
+    </Layout>
   );
 }
 export default App;
