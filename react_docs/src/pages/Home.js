@@ -9,6 +9,7 @@ export function Home(){
                 <Link to="/gallery" className="nav-link" >Gallery</Link>
                 <Link to="/JSX with curly braces" className="nav-link">JavaScript in JSX with curly braces</Link>
                 <Link to="/passing props" className="nav-link">Pasing Props</Link>
+                <Link to="/read props" className="nav-link">Read Props inside the child components</Link>
 
             </nav>
         </div>
