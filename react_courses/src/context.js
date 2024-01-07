@@ -1,5 +1,6 @@
 import { createContext, useReducer } from "react";
 export const Context=createContext()
+
 const photos=[]
 const initialState={
     items: photos,
