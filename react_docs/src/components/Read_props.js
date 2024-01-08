@@ -12,12 +12,9 @@ function Avatar({ person, size }) {
   );
 }
 
-
-
 export default function Profiles() {
   return (
     <div>
-      
       <Avatar
         size={100}
         person={{

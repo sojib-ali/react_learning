@@ -4,7 +4,7 @@ import { Home } from "./pages/Home";
 import { TodoList } from "./components/JSX_curlyBraces";
 import Profile from "./components/image_card";
 import Profiles from "./components/Read_props";
-import Scientists from "./challenges/Gallery";
+import Gallerys from "./challenges/Gallery";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -17,7 +17,7 @@ function App() {
         <Route path="/JSX with curly braces" element={<TodoList />} />
         <Route path="/passing props" element={<Profile />} />
         <Route path="/read props" element={<Profiles />} />
-        <Route path="/challenge 1" element={<Scientists />} />
+        <Route path="/challenge 1" element={<Gallerys />} />
       </Routes>
     </BrowserRouter>
   );

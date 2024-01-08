@@ -12,6 +12,9 @@
   margin-bottom: 10px; /* Adjust the bottom margin as needed */
   float: right;
 }
-.wrapper{
-  border: 10px;
+.gallery-wrapper {
+  display: inline-block;
+  border: 2px solid #000; /* Set the border style as per your preference */
+  padding: 0 10px 0 10px; /* Add some padding to give space around the content */
+  margin: 10px;
 }

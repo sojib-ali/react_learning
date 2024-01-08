@@ -21,7 +21,9 @@ export function Home() {
           Read Props inside the child components
         </Link>
         <h2>Challenges</h2>
-        <Link to="/challenge 1" className="nav-link">Challenge 1 of 3:Extract a component  </Link>
+        <Link to="/challenge 1" className="nav-link">
+          Challenge 1 of 3:Extract a component{" "}
+        </Link>
       </nav>
 
       <nav style={{ display: "block" }}>
