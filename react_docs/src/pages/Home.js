@@ -24,6 +24,9 @@ export function Home() {
         <Link to="/challenge 1" className="nav-link">
           Challenge 1 of 3:Extract a component{" "}
         </Link>
+        <Link to="/logical AND" className="nav-link">
+          Conditional rendering
+        </Link>
       </nav>
 
       <nav style={{ display: "block" }}>
