@@ -6,6 +6,8 @@ import Profile from "./components/image_card";
 import Profiles from "./components/Read_props";
 import Gallerys from "./challenges/Gallery";
 import PackingList from "./components/conditional";
+import List from "./components/rendered_list";
+import List_2 from "./challenges/2_rendered_list";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -20,6 +22,8 @@ function App() {
         <Route path="/read props" element={<Profiles />} />
         <Route path="/challenge 1" element={<Gallerys />} />
         <Route path="/logical AND" element={<PackingList />} />
+        <Route path="/rendering list" element={<List />} />
+        <Route path="/rendering list_2" element={<List_2 />} />
       </Routes>
     </BrowserRouter>
   );

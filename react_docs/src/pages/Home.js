@@ -7,7 +7,7 @@ export function Home() {
     <div>
       <nav style={{ display: "block" }}>
         <h1>Describing the UI</h1>
-        <h3>Passing Props to a components</h3>
+        {/* <h3>Passing Props to a components</h3> */}
         <Link to="/gallery" className="nav-link">
           Gallery
         </Link>
@@ -20,6 +20,12 @@ export function Home() {
         <Link to="/read props" className="nav-link">
           Read Props inside the child components
         </Link>
+        <Link to="/rendering list" className="nav-link">
+          Rendering list
+        </Link>
+
+
+
         <h2>Challenges</h2>
         <Link to="/challenge 1" className="nav-link">
           Challenge 1 of 3:Extract a component{" "}
@@ -27,6 +33,10 @@ export function Home() {
         <Link to="/logical AND" className="nav-link">
           Conditional rendering
         </Link>
+        <Link to="/rendering list_2" className="nav-link">
+          Rendering list_2
+        </Link>
+
       </nav>
 
       <nav style={{ display: "block" }}>
