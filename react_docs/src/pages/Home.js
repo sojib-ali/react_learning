@@ -1,6 +1,8 @@
 // import { Gallery } from "../components/Gallery";
 import { Link } from "react-router-dom";
 import "../styles/Home.css";
+import "../styles/Stories.css";
+
 
 export function Home() {
   return (
@@ -23,6 +25,9 @@ export function Home() {
         <Link to="/rendering list" className="nav-link">
           Rendering list
         </Link>
+        <Link to="/Get Inspired App" className="nav-link">
+          Your UI as a Tree - Get Inspired App
+        </Link>
 
 
 
@@ -36,12 +41,14 @@ export function Home() {
         <Link to="/rendering list_2" className="nav-link">
           Rendering list_2
         </Link>
+        <Link to="/story tray" className="nav-link">
+          Keeping Components Pure
+        </Link>
 
       </nav>
 
       <nav style={{ display: "block" }}>
-        <h1>Describing the UI</h1>
-        <h3>Passing Props to a components</h3>
+        <h1>Adding Interactivity</h1>
       </nav>
     </div>
   );

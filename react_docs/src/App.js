@@ -8,6 +8,8 @@ import Gallerys from "./challenges/Gallery";
 import PackingList from "./components/conditional";
 import List from "./components/rendered_list";
 import List_2 from "./challenges/2_rendered_list";
+import InitStories from "./challenges/initialStories";
+import GetInspired from "./components/GetInspired";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -24,6 +26,8 @@ function App() {
         <Route path="/logical AND" element={<PackingList />} />
         <Route path="/rendering list" element={<List />} />
         <Route path="/rendering list_2" element={<List_2 />} />
+        <Route path="/story tray" element={< InitStories />} />
+        <Route path="/Get Inspired App" element={< GetInspired />} />
       </Routes>
     </BrowserRouter>
   );
