@@ -7,7 +7,7 @@ import "../styles/Stories.css";
 export function Home() {
   return (
     <div>
-      <nav style={{ display: "block" }}>
+      <nav>
         <h1>Describing the UI</h1>
         {/* <h3>Passing Props to a components</h3> */}
         <Link to="/gallery" className="nav-link">
@@ -28,10 +28,21 @@ export function Home() {
         <Link to="/Get Inspired App" className="nav-link">
           Your UI as a Tree - Get Inspired App
         </Link>
+        </nav>
+
+      <nav>
+        <h1>Adding Interactivity</h1>
+        <Link to="/Responding to events" className="nav-link">
+        Responding to events
+        </Link>
+        <Link to="/Event propagation" className="nav-link">
+        Event Propagation
+        </Link>
+      </nav>
 
 
-
-        <h2>Challenges</h2>
+      <nav>
+        <h1>Challenges</h1>
         <Link to="/challenge 1" className="nav-link">
           Challenge 1 of 3:Extract a component{" "}
         </Link>
@@ -44,11 +55,6 @@ export function Home() {
         <Link to="/story tray" className="nav-link">
           Keeping Components Pure
         </Link>
-
-      </nav>
-
-      <nav style={{ display: "block" }}>
-        <h1>Adding Interactivity</h1>
       </nav>
     </div>
   );
