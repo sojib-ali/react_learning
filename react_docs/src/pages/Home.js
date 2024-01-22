@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "../styles/Home.css";
 import "../styles/Stories.css";
 
-
 export function Home() {
   return (
     <div>
@@ -28,18 +27,26 @@ export function Home() {
         <Link to="/Get Inspired App" className="nav-link">
           Your UI as a Tree - Get Inspired App
         </Link>
-        </nav>
+      </nav>
 
       <nav>
         <h1>Adding Interactivity</h1>
         <Link to="/Responding to events" className="nav-link">
-        Responding to events
+          Responding to events
         </Link>
         <Link to="/Event propagation" className="nav-link">
-        Event Propagation
+          Event Propagation
+        </Link>
+        <Link to="/State variable" className="nav-link">
+          Adding a state variable
+        </Link>
+        <Link to="/state form" className="nav-link">
+          state over time
+        </Link>
+        <Link to="/traffic light" className="nav-link">
+          Implement a traffic light
         </Link>
       </nav>
-
 
       <nav>
         <h1>Challenges</h1>
@@ -54,6 +61,15 @@ export function Home() {
         </Link>
         <Link to="/story tray" className="nav-link">
           Keeping Components Pure
+        </Link>
+        <Link to="/forms stuck" className="nav-link">
+          Fix stuck form inputs
+        </Link>
+        <Link to="/feedback form" className="nav-link">
+          Fix a crash on feedback form
+        </Link>
+        <Link to="/greet form" className="nav-link">
+          Remove unnecessary state - greet form
         </Link>
       </nav>
     </div>

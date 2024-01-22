@@ -12,6 +12,12 @@ import InitStories from "./challenges/initialStories";
 import GetInspired from "./components/GetInspired";
 import EventRespond from "./components/Event_respond";
 import Toolbar from "./components/event_propagate";
+import State_gallery from "./components/state_variable";
+import Forms_stuck from "./components/Forms_stuck";
+import FeedbackForm from "./components/FeedBack";
+import GreetForm from "./components/state_removal";
+import StateForm from "./components/State_time";
+import TrafficLight from "./components/Traffic_signal";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -28,10 +34,16 @@ function App() {
         <Route path="/logical AND" element={<PackingList />} />
         <Route path="/rendering list" element={<List />} />
         <Route path="/rendering list_2" element={<List_2 />} />
-        <Route path="/story tray" element={< InitStories />} />
-        <Route path="/Get Inspired App" element={< GetInspired />} />
-        <Route path="/Responding to events" element={< EventRespond />} />
-        <Route path="/Event propagation" element={< Toolbar />} />
+        <Route path="/story tray" element={<InitStories />} />
+        <Route path="/Get Inspired App" element={<GetInspired />} />
+        <Route path="/Responding to events" element={<EventRespond />} />
+        <Route path="/Event propagation" element={<Toolbar />} />
+        <Route path="/State variable" element={<State_gallery />} />
+        <Route path="/forms stuck" element={<Forms_stuck />} />
+        <Route path="/feedback form" element={<FeedbackForm />} />
+        <Route path="/greet form" element={<GreetForm />} />
+        <Route path="/state form" element={<StateForm />} />
+        <Route path="/traffic light" element={<TrafficLight />} />
       </Routes>
     </BrowserRouter>
   );
