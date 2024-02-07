@@ -46,3 +46,39 @@ let employee: Employee = {
     console.log(date);
   },
 };
+
+//unions
+
+function kgToLbs(weight: number | string): number {
+  if (typeof weight === "number") return weight * 2.2;
+  else return parseInt(weight) * 2.2;
+}
+kgToLbs(10);
+kgToLbs("10kg");
+
+//intersection
+type Draggable = {
+  drag: () => void;
+};
+type Resizable = {
+  resize: () => void;
+};
+
+type UIWidget = Draggable & Resizable;
+let textBox: UIWidget = {
+  drag: () => {},
+  resize: () => {},
+};
+
+//Literal (exact,specific)
+type Quantity = 50 | 100;
+let quantity: Quantity = 100;
+
+type Metric = "cm" | "ince";
+
+//Nullable types
+function greet(name: string | null) {
+  if (name) console.log(name.toUpperCase());
+  else console.log("Hola");
+}
+greet(null);
