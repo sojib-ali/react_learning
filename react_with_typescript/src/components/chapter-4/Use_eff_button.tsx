@@ -3,7 +3,7 @@ import { useState } from "react";
 
 export default function Use_eff_button() {
   const [clicked, setClicked] = useState(false);
-  document.title = "sojib";
+
   useEffect(() => {
     if (clicked) {
       console.log("in");
