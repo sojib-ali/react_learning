@@ -1,4 +1,5 @@
-import { useEffect, useReducer, useRef, useMemo } from "react";
+import { useEffect, useReducer, useRef, useMemo, useCallback } from "react";
+import { Reset } from "./Callback_reset";
 function s_Exp_function() {
   console.log("Executing silly function");
   let sum = 0;
@@ -62,7 +63,7 @@ function reducer(state: State, action: Action): State {
       return state;
   }
 }
-export default function Person_Score_5() {
+export default function Person_Score_6() {
   const [{ name, score, loading }, dispatch] = useReducer(reducer, {
     name: undefined,
     score: 0,
@@ -77,10 +78,8 @@ export default function Person_Score_5() {
       addButtonRef.current?.focus();
     }
   }, [loading]);
-  const expensive_calculation = useMemo(
-    ()=> s_Exp_function(),[]
-  );
-  
+  const expensive_calculation = useMemo(() => s_Exp_function(), []);
+  const handleReset = useCallback(() => dispatch({ type: "reset" }), []);
   if (loading) {
     return <div>Loading ...</div>;
   }
@@ -97,7 +96,7 @@ export default function Person_Score_5() {
         Add
       </button>
       <button onClick={() => dispatch({ type: "decrement" })}>Subtract</button>
-      <button onClick={() => dispatch({ type: "reset" })}>Reset</button>
+      <Reset onClick={handleReset} />
     </div>
   );
 }
