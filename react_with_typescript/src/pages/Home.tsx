@@ -34,6 +34,14 @@ export function Home() {
         <Link to="/alert-plain-css" className="links">
           Using plain CSS in the alert component
         </Link>
+
+        <h3>Chapter-6</h3>
+        {/* <Link to="/products-list" className="links">
+          Product page using react router
+        </Link> */}
+        <Link to="/nav-bar" className="links">
+          header
+        </Link>
       </div>
     </>
   );

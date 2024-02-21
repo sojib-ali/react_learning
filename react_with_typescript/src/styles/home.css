@@ -4,3 +4,10 @@
 .links {
   display: block;
 }
+.lessons h3 {
+  font-weight: bold;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  color: brown;
+  margin-top: 20px;
+}
