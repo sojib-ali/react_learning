@@ -1,6 +1,6 @@
 import { products } from "../data/products";
 
-export function Products_page() {
+export default function Products_page() {
   return (
     <div className="text-center p-5">
       <h2 className="text-xl font-bold text-slate-600">

@@ -11,7 +11,8 @@ import Person_Score_4 from "./components/chapter-4/Use_ref_data_fetching.tsx";
 import Person_Score_5 from "./components/chapter-4/Use_memo_data_fetch.tsx";
 import Person_Score_6 from "./components/chapter-4/Callback_hook.tsx";
 import Alert from "./components/chapter-5/Alert.tsx";
-import { Products_page } from "./components/chapter-6/page/Products_page.tsx";
+import Products_page from "./components/chapter-6/page/Products_page.tsx";
+import Product_page from "./components/chapter-6/page/Product_page.tsx";
 import Header from "./components/Header.tsx";
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
 
         <Route path="/nav-bar" element={<Header />}>
           <Route path="nav-bar/products-list" element={<Products_page />} />
+          <Route path="nav-bar/products-list/:id" element={<Product_page />} />
         </Route>
       </Routes>
     </BrowserRouter>
