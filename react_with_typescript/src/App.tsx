@@ -14,6 +14,7 @@ import Alert from "./components/chapter-5/Alert.tsx";
 import Products_page from "./components/chapter-6/page/Products_page.tsx";
 import Product_page from "./components/chapter-6/page/Product_page.tsx";
 import Header from "./components/Header.tsx";
+import { Error_page } from "./components/chapter-6/page/Error_page.tsx";
 
 function App() {
   return (
@@ -32,9 +33,11 @@ function App() {
         <Route path="/alert-plain-css" element={<Alert />} />
 
         <Route path="/nav-bar" element={<Header />}>
-          <Route path="nav-bar/products-list" element={<Products_page />} />
-          <Route path="nav-bar/products-list/:id" element={<Product_page />} />
+          <Route path="products-list" element={<Products_page />} />
+          <Route path="products-list/:id" element={<Product_page />} />
         </Route>
+        <Route path="/nav-bar/*" element={<Error_page />} />
+        <Route path="*" element={<h1>Page Not Found</h1>} />
       </Routes>
     </BrowserRouter>
   );
