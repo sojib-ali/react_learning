@@ -5,6 +5,8 @@ import { ProdPage } from "./ProdPage.tsx";
 import { N_error } from "./N_error.tsx";
 import { N_home } from "../pages/N_home.tsx";
 import Apps from "../Apps.tsx";
+import { Suspense } from "react";
+import AdminPage from "./Admin_page.tsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -29,6 +31,20 @@ const router = createBrowserRouter([
       {
         path: "products/:id",
         element: <ProdPage />,
+      },
+      {
+        path: "admin",
+        element: (
+          <Suspense
+            fallback={
+              <div className="text-center p-5 text-xl text-slate-600">
+                Loading...
+              </div>
+            }
+          >
+            <AdminPage />
+          </Suspense>
+        ),
       },
     ],
   },
