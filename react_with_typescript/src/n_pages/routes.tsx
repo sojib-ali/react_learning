@@ -7,6 +7,7 @@ import { N_home } from "../pages/N_home.tsx";
 import Apps from "../Apps.tsx";
 import { Suspense } from "react";
 import AdminPage from "./Admin_page.tsx";
+import ContactPage from "./contactPage.tsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -43,6 +44,34 @@ const router = createBrowserRouter([
             }
           >
             <AdminPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: "admin",
+        element: (
+          <Suspense
+            fallback={
+              <div className="text-center p-5 text-xl text-slate-600">
+                Loading...
+              </div>
+            }
+          >
+            <AdminPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: "contact",
+        element: (
+          <Suspense
+            fallback={
+              <div className="text-center p-5 text-xl text-slate-600">
+                Loading...
+              </div>
+            }
+          >
+            <ContactPage />
           </Suspense>
         ),
       },

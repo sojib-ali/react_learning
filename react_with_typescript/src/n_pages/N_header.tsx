@@ -62,6 +62,16 @@ export default function N_header() {
         >
           Admin
         </NavLink>
+        <NavLink
+          to="contact"
+          className={({ isActive }) =>
+            `text-white no-underline p-1 pb-0.5 border-solid border-b-2 ${
+              isActive ? "border-white" : "border-transparent"
+            }`
+          }
+        >
+          Contact Page
+        </NavLink>
       </nav>
       <Outlet />
     </header>
