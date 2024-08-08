@@ -1,4 +1,8 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Navigate,
+} from "react-router-dom";
 import { ProListPage } from "./ProListPage.tsx";
 import N_header from "./N_header.tsx";
 import { ProdPage } from "./ProdPage.tsx";
