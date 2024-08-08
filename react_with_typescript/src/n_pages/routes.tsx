@@ -11,7 +11,7 @@ import { N_home } from "../pages/N_home.tsx";
 import Apps from "../Apps.tsx";
 import { Suspense } from "react";
 import AdminPage from "./Admin_page.tsx";
-import { ContactPage, contactPageAction } from "./contactPage.tsx";
+import { ContactPage } from "./contactPage.tsx";
 import { ThankYouPage } from "./ThankYouPage.tsx";
 const router = createBrowserRouter([
   {
@@ -69,7 +69,7 @@ const router = createBrowserRouter([
       {
         path: "contact",
         element: <ContactPage />,
-        action: contactPageAction,
+        // action: contactPageAction,
       },
       {
         path: "thank-you/:name",
