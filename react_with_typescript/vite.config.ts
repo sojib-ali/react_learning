@@ -5,3 +5,12 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [react()],
 });
+
+// vite.config.js
+// import { qrcode } from "vite-plugin-qrcode";
+
+// export default defineConfig({
+//   plugins: [
+//     qrcode(), // only applies in dev mode
+//   ],
+// });

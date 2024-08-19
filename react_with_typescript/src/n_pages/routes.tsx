@@ -13,6 +13,8 @@ import { Suspense } from "react";
 import AdminPage from "./Admin_page.tsx";
 import { ContactPage } from "./contactPage.tsx";
 import { ThankYouPage } from "./ThankYouPage.tsx";
+import { Prop_drilling } from "../chapter-8/Prop_drilling.tsx";
+import { App_context } from "../chapter-8/App_context.tsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -76,6 +78,14 @@ const router = createBrowserRouter([
         element: <ThankYouPage />,
       },
     ],
+  },
+  {
+    path: "prop-drilling",
+    element: <Prop_drilling />,
+  },
+  {
+    path: "react-context",
+    element: <App_context />,
   },
 ]);
 
