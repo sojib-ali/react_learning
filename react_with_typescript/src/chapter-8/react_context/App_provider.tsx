@@ -1,5 +1,11 @@
-import React, { createContext, useContext, useReducer, ReactNode } from "react";
-import { User } from "./api/authenticate";
+import React, {
+  createContext,
+  useContext,
+  useReducer,
+  ReactNode,
+  Children,
+} from "react";
+import { User } from "../api/authenticate";
 
 type State = {
   user: undefined | User;
@@ -49,13 +55,30 @@ type AppContextType = State & {
   dispatch: React.Dispatch<Action>;
 };
 
-createContext<AppContextType>({
+const AppContext = createContext<AppContextType>({
   ...initialState,
   dispatch: () => {},
 });
 
-// type Props = {};
-
-export function App_context() {
-  return <div></div>;
+type Props = {
+  children: ReactNode;
+};
+export function AppProvider({ children }: Props) {
+  const [{ user, permissions, loading }, dispatch] = useReducer(
+    reducer,
+    initialState
+  );
+  return (
+    <AppContext.Provider
+      value={{
+        user,
+        permissions,
+        loading,
+        dispatch,
+      }}
+    >
+      {children}
+    </AppContext.Provider>
+  );
 }
+export const useAppContext = () => useContext(AppContext);

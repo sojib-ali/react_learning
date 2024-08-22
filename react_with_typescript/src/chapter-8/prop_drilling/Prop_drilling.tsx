@@ -1,8 +1,8 @@
 import { useReducer } from "react";
 import { Header } from "./Header";
 import { Main } from "./Main";
-import { authenticate, User } from "./api/authenticate";
-import { authorize } from "./api/authorize";
+import { authenticate, User } from "../api/authenticate";
+import { authorize } from "../api/authorize";
 // import { Statement } from "typescript";
 
 type State = {
