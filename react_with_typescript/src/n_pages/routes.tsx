@@ -15,6 +15,8 @@ import { ContactPage } from "./contactPage.tsx";
 import { ThankYouPage } from "./ThankYouPage.tsx";
 import { Prop_drilling } from "../chapter-8/prop_drilling/Prop_drilling.tsx";
 import App_context from "../chapter-8/react_context/App_context.tsx";
+import Alert_button from "../chapter-8/sarwar/Alert_button.tsx";
+import Redux from "../chapter-8/react_redux/Redux.tsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -86,6 +88,14 @@ const router = createBrowserRouter([
   {
     path: "react-context",
     element: <App_context />,
+  },
+  {
+    path: "react-redux",
+    element: <Redux />,
+  },
+  {
+    path: "alert-button",
+    element: <Alert_button />,
   },
 ]);
 

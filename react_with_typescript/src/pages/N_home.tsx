@@ -14,6 +14,12 @@ export function N_home() {
       <Link to="react-context" className="links">
         React Context
       </Link>
+      <Link to="react-redux" className="links">
+        React redux
+      </Link>
+      <Link to="alert-button" className="links">
+        sarwar
+      </Link>
     </div>
   );
 }

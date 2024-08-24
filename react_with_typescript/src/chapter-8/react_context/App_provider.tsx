@@ -1,10 +1,4 @@
-import React, {
-  createContext,
-  useContext,
-  useReducer,
-  ReactNode,
-  Children,
-} from "react";
+import React, { createContext, useContext, useReducer, ReactNode } from "react";
 import { User } from "../api/authenticate";
 
 type State = {
