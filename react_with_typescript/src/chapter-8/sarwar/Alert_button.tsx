@@ -5,9 +5,12 @@ export default function () {
 
   function handleClick() {
     setNum(num + 2);
-    setNum(num + 5);
+    setNum(num + 8);
+    setNum((num) => num + 5);
+    setNum((num) => num + 3);
+    // setNum(num + 6);
     alert(num);
-    console.log(num);
+    // console.log(num);
   }
   return (
     <>
