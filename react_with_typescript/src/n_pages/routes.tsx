@@ -17,6 +17,7 @@ import { Prop_drilling } from "../chapter-8/prop_drilling/Prop_drilling.tsx";
 import App_context from "../chapter-8/react_context/App_context.tsx";
 import Alert_button from "../chapter-8/sarwar/Alert_button.tsx";
 import Redux from "../chapter-8/react_redux/Redux.tsx";
+import Blogs from "../chapter-9/Blogs.tsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -96,6 +97,10 @@ const router = createBrowserRouter([
   {
     path: "alert-button",
     element: <Alert_button />,
+  },
+  {
+    path: "blog-posts",
+    element: <Blogs />,
   },
 ]);
 

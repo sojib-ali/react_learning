@@ -20,6 +20,10 @@ export function N_home() {
       <Link to="alert-button" className="links">
         sarwar
       </Link>
+      <h4 className="text-red-800 text-2xl">Chapter -9</h4>
+      <Link to="blog-posts" className="links">
+        Blogs fetch with useEffect
+      </Link>
     </div>
   );
 }
