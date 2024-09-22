@@ -1,8 +1,5 @@
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Navigate,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider, defer } from "react-router-dom";
+import { getPosts } from "../chapter-9/posts/getPosts.ts";
 import { ProListPage } from "./ProListPage.tsx";
 import N_header from "./N_header.tsx";
 import { ProdPage } from "./ProdPage.tsx";
@@ -101,6 +98,7 @@ const router = createBrowserRouter([
   {
     path: "blog-posts",
     element: <Blogs />,
+    loader: async () => defer({ posts: getPosts() }),
   },
 ]);
 
