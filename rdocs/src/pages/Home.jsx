@@ -20,6 +20,7 @@ export function Home() {
       <h3>Adding interactivity - lesson(2)</h3>
       <Link to="/next-gallery" className="nav-link">Next Gallery app</Link>
       <Link to="/input-form" className="nav-link">Input form</Link>
+      <Link to="/textarea-msg" className="nav-link">Textarea alert message</Link>
     </div>
     </>
   );

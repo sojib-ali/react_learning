@@ -7,6 +7,7 @@ import Messenger from "../prev/Rmessenger";
 import Co_page from "../prev/Co_page";
 import NextGallery from "./topics/AddInteractivity/Lesson_1/NextGallery";
 import Input_form from "./topics/AddInteractivity/Lesson_1/Input_form";
+import TextArea_fix from "./topics/AddInteractivity/Lesson_1/TextArea_fix";
 function App() {
   return (
     <BrowserRouter>
@@ -18,6 +19,7 @@ function App() {
         <Route path="/context-image-list" element={<Co_page />} />
         <Route path="/next-gallery" element={<NextGallery />} />
         <Route path="/input-form" element={<Input_form />} />
+        <Route path="/textarea-msg" element={<TextArea_fix />} />
       </Routes>
     </BrowserRouter>
   );

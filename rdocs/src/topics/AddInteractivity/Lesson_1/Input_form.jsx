@@ -8,10 +8,13 @@ export default function Input_form() {
     setFirstName("");
     setLastName("");
   }
+  function handleSubmit(){
+    e.preventDefault();
+  }
 
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="First name"
