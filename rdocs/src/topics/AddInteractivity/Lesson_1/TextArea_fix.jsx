@@ -28,11 +28,9 @@ const ChangeField = () =>{
             />
         </form>
         ) :(
-            <p>Thank you</p>
+            <h1>Thank you</h1>
         )
     }
-        {/* {isSend ?  <p>Thank you</p>} */}
-         {/* {isSend && <p>Thank you</p>} */}
     </div>
   )
 }
@@ -40,9 +38,7 @@ const ChangeField = () =>{
 const TextArea_fix = () => {
    
   return (
-   <div>
         <ChangeField />
-   </div>
   )
 }
 

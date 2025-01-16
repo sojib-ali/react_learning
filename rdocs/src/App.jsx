@@ -8,6 +8,7 @@ import Co_page from "../prev/Co_page";
 import NextGallery from "./topics/AddInteractivity/Lesson_1/NextGallery";
 import Input_form from "./topics/AddInteractivity/Lesson_1/Input_form";
 import TextArea_fix from "./topics/AddInteractivity/Lesson_1/TextArea_fix";
+import AlertInput from "./topics/AddInteractivity/Lesson_1/AlertInput";
 function App() {
   return (
     <BrowserRouter>
@@ -20,6 +21,7 @@ function App() {
         <Route path="/next-gallery" element={<NextGallery />} />
         <Route path="/input-form" element={<Input_form />} />
         <Route path="/textarea-msg" element={<TextArea_fix />} />
+        <Route path="/alert-input" element={<AlertInput />} />
       </Routes>
     </BrowserRouter>
   );
