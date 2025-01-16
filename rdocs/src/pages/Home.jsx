@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 import "../styles/home.css";
 export function Home() {
   return (
-    <div className="lessons">
+    <>
+    {/* <div className="lessons">
       <h3>Extracting State Logic into a Reducer</h3>
       <Link to="/task-app" className="nav-link">
         Task App
@@ -13,6 +14,13 @@ export function Home() {
       <Link to="/context-image-list" className="nav-link">
         Replace prop drilling with context
       </Link>
+      
+    </div> */}
+    <div>
+      <h3>Adding interactivity - lesson(2)</h3>
+      <Link to="/next-gallery" className="nav-link">Next Gallery app</Link>
+      <Link to="/input-form" className="nav-link">Input form</Link>
     </div>
+    </>
   );
 }
