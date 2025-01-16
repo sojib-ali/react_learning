@@ -15,6 +15,9 @@ import App_context from "../chapter-8/react_context/App_context.tsx";
 import Alert_button from "../chapter-8/sarwar/Alert_button.tsx";
 import Redux from "../chapter-8/react_redux/Redux.tsx";
 import Blogs from "../chapter-9/Blogs.tsx";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 const router = createBrowserRouter([
   {
     path: "/",
@@ -103,5 +106,9 @@ const router = createBrowserRouter([
 ]);
 
 export function Routes() {
-  return <RouterProvider router={router} />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
+  );
 }
