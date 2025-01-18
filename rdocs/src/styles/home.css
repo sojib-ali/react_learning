@@ -4,3 +4,8 @@
 .lessons {
   margin-top: 20px;
 }
+.lesson-title{
+  display: flex;
+  align-items: center;
+  column-gap: 0.3rem;
+}

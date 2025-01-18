@@ -5,10 +5,10 @@ import Nav from "./pages/Nav";
 import TaskApp from "../prev/Todos";
 import Messenger from "../prev/Rmessenger";
 import Co_page from "../prev/Co_page";
-import NextGallery from "./topics/AddInteractivity/Lesson_1/NextGallery";
-import Input_form from "./topics/AddInteractivity/Lesson_1/Input_form";
-import TextArea_fix from "./topics/AddInteractivity/Lesson_1/TextArea_fix";
-import AlertInput from "./topics/AddInteractivity/Lesson_1/AlertInput";
+import NextGallery from "./topics/AddInteractivity/Lesson_2/NextGallery";
+import Input_form from "./topics/AddInteractivity/Lesson_2/Input_form";
+import TextArea_fix from "./topics/AddInteractivity/Lesson_2/TextArea_fix";
+import AlertInput from "./topics/AddInteractivity/Lesson_2/AlertInput";
 function App() {
   return (
     <BrowserRouter>
