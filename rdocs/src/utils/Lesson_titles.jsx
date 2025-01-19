@@ -106,6 +106,9 @@ const Lesson_titles = () => {
             <Link to="/select-form" className="nav-link">
               select-form
             </Link>
+            <Link to="/signal-color" className="nav-link">
+              Signal color
+            </Link>
           </div>
         </>
       )}

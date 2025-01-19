@@ -11,6 +11,7 @@ import TextArea_fix from "./topics/AddInteractivity/Lesson_2/TextArea_fix";
 import AlertInput from "./topics/AddInteractivity/Lesson_2/AlertInput";
 import Clock_3 from "./topics/AddInteractivity/Lesson_3/Time";
 import SelectForm from "./topics/AddInteractivity/Lesson_4/SelectForm";
+import SignalColor from "./topics/AddInteractivity/Lesson_4/SignalColor";
 function App() {
   return (
     <BrowserRouter>
@@ -26,6 +27,7 @@ function App() {
         <Route path="/alert-input" element={<AlertInput />} />
         <Route path="/current-time" element={<Clock_3 />} />
         <Route path="/select-form" element={<SelectForm />} />
+        <Route path="/signal-color" element={<SignalColor />} />
       </Routes>
     </BrowserRouter>
   );
