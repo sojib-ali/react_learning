@@ -78,11 +78,33 @@ const Lesson_titles = () => {
       {currentLesson === 3 && currentTopic === 1 && (
         <>
           <div>
-            <Link to="/next-gallery" className="nav-link">
-              Next Gallery app
+            <Link to="/current-time" className="nav-link">
+              current-time
             </Link>
             <Link to="/input-form" className="nav-link">
               Input form
+            </Link>
+          </div>
+        </>
+      )}
+      {/* -------------------- lesson - 4 ---------------------*/}
+      {currentTopic === 1 && (
+        <div className="lesson-title">
+          <h4>lesson -4: State as a Snapshot</h4>
+          <span>
+            <IoIosArrowDropdown
+              onClick={() => {
+                setCurrentLesson(currentLesson === 4 ? null : 4);
+              }}
+            />
+          </span>
+        </div>
+      )}
+      {currentLesson === 4 && currentTopic === 1 && (
+        <>
+          <div>
+            <Link to="/select-form" className="nav-link">
+              select-form
             </Link>
           </div>
         </>
