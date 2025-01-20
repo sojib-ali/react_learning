@@ -112,6 +112,50 @@ const Lesson_titles = () => {
           </div>
         </>
       )}
+      {/* -------------------- lesson - 5 ---------------------*/}
+      {currentTopic === 1 && (
+        <div className="lesson-title">
+          <h4>lesson -5: Queueing a series of state updates</h4>
+          <span>
+            <IoIosArrowDropdown
+              onClick={() => {
+                setCurrentLesson(currentLesson === 5 ? null : 5);
+              }}
+            />
+          </span>
+        </div>
+      )}
+      {currentLesson === 5 && currentTopic === 1 && (
+        <>
+          <div>
+            <Link to="/request-tracker" className="nav-link">
+              Track your request
+            </Link>
+          </div>
+        </>
+      )}
+      {/* -------------------- lesson - 6 ---------------------*/}
+      {currentTopic === 1 && (
+        <div className="lesson-title">
+          <h4>lesson -6: Updating objects in state</h4>
+          <span>
+            <IoIosArrowDropdown
+              onClick={() => {
+                setCurrentLesson(currentLesson === 6 ? null : 6);
+              }}
+            />
+          </span>
+        </div>
+      )}
+      {currentLesson === 6 && currentTopic === 1 && (
+        <>
+          <div>
+            <Link to="/moving-dot" className="nav-link">
+              moving dot
+            </Link>
+          </div>
+        </>
+      )}
 
       {/* ---- topic 3--- */}
       <div className="lesson-title">

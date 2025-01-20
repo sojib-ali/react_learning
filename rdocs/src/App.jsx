@@ -12,6 +12,9 @@ import AlertInput from "./topics/AddInteractivity/Lesson_2/AlertInput";
 import Clock_3 from "./topics/AddInteractivity/Lesson_3/Time";
 import SelectForm from "./topics/AddInteractivity/Lesson_4/SelectForm";
 import SignalColor from "./topics/AddInteractivity/Lesson_4/SignalColor";
+import RequestTracker from "./topics/AddInteractivity/Lesson_5/RequestTracker";
+import MovingDot from "./topics/AddInteractivity/Lesson_6/MovingDot";
+
 function App() {
   return (
     <BrowserRouter>
@@ -28,6 +31,8 @@ function App() {
         <Route path="/current-time" element={<Clock_3 />} />
         <Route path="/select-form" element={<SelectForm />} />
         <Route path="/signal-color" element={<SignalColor />} />
+        <Route path="/request-tracker" element={<RequestTracker />} />
+        <Route path="/moving-dot" element={<MovingDot />} />
       </Routes>
     </BrowserRouter>
   );
