@@ -153,6 +153,12 @@ const Lesson_titles = () => {
             <Link to="/moving-dot" className="nav-link">
               moving dot
             </Link>
+            <Link to="/object-form" className="nav-link">
+              Object form
+            </Link>
+            <Link to="/object-spread" className="nav-link">
+              Object spread
+            </Link>
           </div>
         </>
       )}

@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const MovingDot = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   return (
@@ -14,9 +16,8 @@ const MovingDot = () => {
         height: "100vh",
       }}
     >
-      <div>
-        style=
-        {{
+      <div
+        style={{
           position: "absolute",
           backgroundColor: "red",
           borderRadius: "50%",
@@ -24,7 +25,7 @@ const MovingDot = () => {
           width: 20,
           height: 20,
         }}
-      </div>
+      ></div>
     </div>
   );
 };

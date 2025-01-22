@@ -14,6 +14,8 @@ import SelectForm from "./topics/AddInteractivity/Lesson_4/SelectForm";
 import SignalColor from "./topics/AddInteractivity/Lesson_4/SignalColor";
 import RequestTracker from "./topics/AddInteractivity/Lesson_5/RequestTracker";
 import MovingDot from "./topics/AddInteractivity/Lesson_6/MovingDot";
+import ObejctForm from "./topics/AddInteractivity/Lesson_6/ObejctForm";
+import ObjectSpread from "./topics/AddInteractivity/Lesson_6/ObjectSpread";
 
 function App() {
   return (
@@ -33,6 +35,8 @@ function App() {
         <Route path="/signal-color" element={<SignalColor />} />
         <Route path="/request-tracker" element={<RequestTracker />} />
         <Route path="/moving-dot" element={<MovingDot />} />
+        <Route path="/object-form" element={<ObejctForm />} />
+        <Route path="/object-spread" element={<ObjectSpread />} />
       </Routes>
     </BrowserRouter>
   );
