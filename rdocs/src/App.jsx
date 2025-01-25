@@ -16,7 +16,8 @@ import RequestTracker from "./topics/AddInteractivity/Lesson_5/RequestTracker";
 import MovingDot from "./topics/AddInteractivity/Lesson_6/MovingDot";
 import ObejctForm from "./topics/AddInteractivity/Lesson_6/ObejctForm";
 import ObjectSpread from "./topics/AddInteractivity/Lesson_6/ObjectSpread";
-
+import ScoreBoard from "./topics/AddInteractivity/Lesson_6/ScoreBoard";
+import Canvas from "./topics/AddInteractivity/Lesson_6/Canvas";
 function App() {
   return (
     <BrowserRouter>
@@ -37,6 +38,8 @@ function App() {
         <Route path="/moving-dot" element={<MovingDot />} />
         <Route path="/object-form" element={<ObejctForm />} />
         <Route path="/object-spread" element={<ObjectSpread />} />
+        <Route path="/scoreboard" element={<ScoreBoard />} />
+        <Route path="/drag-canvas" element={<Canvas />} />
       </Routes>
     </BrowserRouter>
   );

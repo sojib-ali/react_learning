@@ -159,6 +159,12 @@ const Lesson_titles = () => {
             <Link to="/object-spread" className="nav-link">
               Object spread
             </Link>
+            <Link to="/scoreboard" className="nav-link">
+              challenge - 1
+            </Link>
+            <Link to="/drag-canvas" className="nav-link">
+              challenge - 2
+            </Link>
           </div>
         </>
       )}
