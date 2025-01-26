@@ -20,16 +20,28 @@ const Canvas = () => {
     });
   }
 
+  function handleMove(dx, dy) {
+    setShape({
+      ...shape,
+      position: {
+        x: shape.position.x + dx,
+        y: shape.position.y + dy,
+      },
+    });
+  }
+
   return (
     <div>
       <select onChange={handleColorChange} value={shape.color}>
-        <option value="">orange</option>
-        <option value="">lightpink</option>
-        <option value="">iceblue</option>
+        <option value="orange">orange</option>
+        <option value="lightpink">lightpink</option>
+        <option value="aliceblue">aliceblue</option>
       </select>
       <br /> <br />
-      <Background />
-      <Box color={shape.color}>Drag me</Box>
+      <Background position={initialPosition} />
+      <Box color={shape.color} onMove={handleMove} position={shape.position}>
+        Drag me
+      </Box>
     </div>
   );
 };
