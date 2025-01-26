@@ -168,6 +168,37 @@ const Lesson_titles = () => {
           </div>
         </>
       )}
+      {/* -------------------- lesson - 7 ---------------------*/}
+      {currentTopic === 1 && (
+        <div className="lesson-title">
+          <h4>lesson -7: Updating Arrays in state</h4>
+          <span>
+            <IoIosArrowDropdown
+              onClick={() => {
+                setCurrentLesson(currentLesson === 7 ? null : 7);
+              }}
+            />
+          </span>
+        </div>
+      )}
+      {currentLesson === 7 && currentTopic === 1 && (
+        <>
+          <div>
+            <Link to="/add-array" className="nav-link">
+              adding to an array
+            </Link>
+            <Link to="/remove-array" className="nav-link">
+              removing from an array
+            </Link>
+            <Link to="/shape-editor" className="nav-link">
+              transforming an array
+            </Link>
+            <Link to="/counter-list" className="nav-link">
+              Replacing items in an array
+            </Link>
+          </div>
+        </>
+      )}
 
       {/* ---- topic 3--- */}
       <div className="lesson-title">

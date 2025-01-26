@@ -18,6 +18,11 @@ import ObejctForm from "./topics/AddInteractivity/Lesson_6/ObejctForm";
 import ObjectSpread from "./topics/AddInteractivity/Lesson_6/ObjectSpread";
 import ScoreBoard from "./topics/AddInteractivity/Lesson_6/ScoreBoard";
 import Canvas from "./topics/AddInteractivity/Lesson_6/Canvas";
+import Add_arr from "./topics/AddInteractivity/Lesson_7/Add_arr";
+import Remove_arr from "./topics/AddInteractivity/Lesson_7/Remove_arr";
+import ShapeEditor from "./topics/AddInteractivity/Lesson_7/ShapeEditor";
+import CounterList from "./topics/AddInteractivity/Lesson_7/CounterList";
+
 function App() {
   return (
     <BrowserRouter>
@@ -40,6 +45,10 @@ function App() {
         <Route path="/object-spread" element={<ObjectSpread />} />
         <Route path="/scoreboard" element={<ScoreBoard />} />
         <Route path="/drag-canvas" element={<Canvas />} />
+        <Route path="/add-array" element={<Add_arr />} />
+        <Route path="/remove-array" element={<Remove_arr />} />
+        <Route path="/shape-editor" element={<ShapeEditor />} />
+        <Route path="/counter-list" element={<CounterList />} />
       </Routes>
     </BrowserRouter>
   );
