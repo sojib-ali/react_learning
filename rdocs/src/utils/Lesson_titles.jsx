@@ -196,6 +196,12 @@ const Lesson_titles = () => {
             <Link to="/counter-list" className="nav-link">
               Replacing items in an array
             </Link>
+            <Link to="/insert_array" className="nav-link">
+              Inserting into an array
+            </Link>
+            <Link to="/reverse-list" className="nav-link">
+              Reversing an array of list
+            </Link>
           </div>
         </>
       )}

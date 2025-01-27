@@ -22,6 +22,8 @@ import Add_arr from "./topics/AddInteractivity/Lesson_7/Add_arr";
 import Remove_arr from "./topics/AddInteractivity/Lesson_7/Remove_arr";
 import ShapeEditor from "./topics/AddInteractivity/Lesson_7/ShapeEditor";
 import CounterList from "./topics/AddInteractivity/Lesson_7/CounterList";
+import Insert_arr from "./topics/AddInteractivity/Lesson_7/Insert_arr";
+import ReverseList from "./topics/AddInteractivity/Lesson_7/ReverseList";
 
 function App() {
   return (
@@ -49,6 +51,8 @@ function App() {
         <Route path="/remove-array" element={<Remove_arr />} />
         <Route path="/shape-editor" element={<ShapeEditor />} />
         <Route path="/counter-list" element={<CounterList />} />
+        <Route path="/insert_array" element={<Insert_arr />} />
+        <Route path="/reverse-list" element={<ReverseList />} />
       </Routes>
     </BrowserRouter>
   );
