@@ -202,6 +202,9 @@ const Lesson_titles = () => {
             <Link to="/reverse-list" className="nav-link">
               Reversing an array of list
             </Link>
+            <Link to="/bucket-list" className="nav-link">
+              Select bucket list
+            </Link>
           </div>
         </>
       )}

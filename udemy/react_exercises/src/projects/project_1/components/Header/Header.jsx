@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import reactImg from "/src/assets/react-core-concepts.png";
 const reacDescriptions = ["Fundamental", "Crucial", "Core"];
+import "./../Header/Header.css";
 
 // function genRandomInt(max) {
 //   return Math.floor(Math.random() * (max + 1));
