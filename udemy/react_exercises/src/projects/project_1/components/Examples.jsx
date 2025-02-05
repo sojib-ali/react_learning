@@ -12,6 +12,7 @@ const Examples = () => {
         {/* {!index && <p>Please select a topic.</p>} */}
 
         <Tabs
+          buttonContainer="menu"
           buttons={
             <>
               <TabButton
