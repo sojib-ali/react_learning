@@ -205,6 +205,9 @@ const Lesson_titles = () => {
             <Link to="/bucket-list" className="nav-link">
               Select bucket list
             </Link>
+            <Link to="/shopping-cart" className="nav-link">
+              Challenge-1: lesson:7
+            </Link>
           </div>
         </>
       )}

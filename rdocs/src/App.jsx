@@ -25,6 +25,7 @@ import CounterList from "./topics/AddInteractivity/Lesson_7/CounterList";
 import Insert_arr from "./topics/AddInteractivity/Lesson_7/Insert_arr";
 import ReverseList from "./topics/AddInteractivity/Lesson_7/ReverseList";
 import BucketList from "./topics/AddInteractivity/Lesson_7/BucketList";
+import ShoppingCart from "./topics/AddInteractivity/Lesson_7/ShoppingCart";
 
 function App() {
   return (
@@ -55,6 +56,7 @@ function App() {
         <Route path="/insert_array" element={<Insert_arr />} />
         <Route path="/reverse-list" element={<ReverseList />} />
         <Route path="/bucket-list" element={<BucketList />} />
+        <Route path="/shopping-cart" element={<ShoppingCart />} />
       </Routes>
     </BrowserRouter>
   );
