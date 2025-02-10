@@ -206,7 +206,10 @@ const Lesson_titles = () => {
               Select bucket list
             </Link>
             <Link to="/shopping-cart" className="nav-link">
-              Challenge-1: lesson:7
+              Challenge-1: lesson:7 - shopping cart
+            </Link>
+            <Link to="/add-todo" className="nav-link">
+              Challenge-2: lesson:7 - Add todo list
             </Link>
           </div>
         </>
