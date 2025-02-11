@@ -10,6 +10,7 @@ const Add_todo = () => {
   const [newItems, setNewItems] = useState("");
   const [listItems, setListItems] = useState(initialList);
   const [editingId, setEditingId] = useState(null);
+  const [saveItems, setSaveItems] = useState("");
 
   function addClick() {
     setListItems((item) => [
@@ -27,15 +28,15 @@ const Add_todo = () => {
     if (editingId === itemId) {
       setListItems(
         listItems.map((item) =>
-          item.id === itemId ? { ...item, listName: newItems } : item
+          item.id === itemId ? { ...item, listName: saveItems } : item
         )
       );
       setEditingId(null);
-      setNewItems("");
+      setSaveItems("");
     } else {
       setEditingId(itemId);
       const currentItem = listItems.find((item) => item.id === itemId);
-      setNewItems(currentItem.listName);
+      setSaveItems(currentItem.listName);
     }
   }
   return (
@@ -49,14 +50,15 @@ const Add_todo = () => {
         />{" "}
         <button onClick={addClick}>Add</button>
       </form>
+
       <ul>
         {listItems.map((listItem) => (
           <li key={listItem.id}>
             {editingId === listItem.id ? (
               <input
                 type="text"
-                onChange={(e) => setNewItems(e.target.value)}
-                value={newItems}
+                onChange={(e) => setSaveItems(e.target.value)}
+                value={saveItems}
               />
             ) : (
               listItem.listName
@@ -73,3 +75,7 @@ const Add_todo = () => {
 };
 
 export default Add_todo;
+
+// take 3 handler into a separate file and pass it as props
+// fix the input field issues
+// add checklists and once two or three items are selected, should be able to delete
