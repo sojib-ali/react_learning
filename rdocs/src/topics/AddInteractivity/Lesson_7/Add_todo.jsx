@@ -9,9 +9,6 @@ const initialList = [
 const Add_todo = () => {
   const [newItems, setNewItems] = useState("");
   const [listItems, setListItems] = useState(initialList);
-  // const [listItems, setListItems] = useState(initialList);
-  // const [editingId, setEditingId] = useState(null);
-  // const [saveItems, setSaveItems] = useState("");
 
   function addClick() {
     setListItems((item) => [
@@ -21,25 +18,6 @@ const Add_todo = () => {
     setNewItems("");
   }
 
-  // function removeItems(itemId) {
-  //   setListItems(listItems.filter((item) => item.id !== itemId));
-  // }
-
-  // function editItem(itemId) {
-  //   if (editingId === itemId) {
-  //     setListItems(
-  //       listItems.map((item) =>
-  //         item.id === itemId ? { ...item, listName: saveItems } : item
-  //       )
-  //     );
-  //     setEditingId(null);
-  //     setSaveItems("");
-  //   } else {
-  //     setEditingId(itemId);
-  //     const currentItem = listItems.find((item) => item.id === itemId);
-  //     setSaveItems(currentItem.listName);
-  //   }
-  // }
   return (
     <>
       <form onSubmit={(e) => e.preventDefault()}>
@@ -51,28 +29,7 @@ const Add_todo = () => {
         />{" "}
         <button onClick={addClick}>Add</button>
       </form>
-
-      {/* <ProductList onRemove={removeItems} onEdit={editItem} /> */}
       <AddFunction listItems={listItems} setListItems={setListItems} />
-      {/* <ul>
-        {listItems.map((listItem) => (
-          <li key={listItem.id}>
-            {editingId === listItem.id ? (
-              <input
-                type="text"
-                onChange={(e) => setSaveItems(e.target.value)}
-                value={saveItems}
-              />
-            ) : (
-              listItem.listName
-            )}
-            <button onClick={() => editItem(listItem.id)}>
-              {editingId === listItem.id ? "Save" : "Edit"}
-            </button>{" "}
-            <button onClick={() => removeItems(listItem.id)}>Delete</button>
-          </li>
-        ))}
-      </ul> */}
     </>
   );
 };

@@ -27,6 +27,7 @@ import ReverseList from "./topics/AddInteractivity/Lesson_7/ReverseList";
 import BucketList from "./topics/AddInteractivity/Lesson_7/BucketList";
 import ShoppingCart from "./topics/AddInteractivity/Lesson_7/ShoppingCart";
 import Add_todo from "./topics/AddInteractivity/Lesson_7/Add_todo";
+import Todo from "./topics/AddInteractivity/Lesson_7/add_items/Todo";
 
 function App() {
   return (
@@ -59,6 +60,7 @@ function App() {
         <Route path="/bucket-list" element={<BucketList />} />
         <Route path="/shopping-cart" element={<ShoppingCart />} />
         <Route path="/add-todo" element={<Add_todo />} />
+        <Route path="/todo-list" element={<Todo />} />
       </Routes>
     </BrowserRouter>
   );
