@@ -3,6 +3,8 @@ const ProductList = ({items, setItems}) => {
   
   const [editingId,setEditingId] = useState(null);
   const [saveItems, setSaveItems] = useState("");
+  const [isSelect, setIsSelect] = useState(false);
+  const [selectedIds, setSelectedIds] = useState([]);
 
   function handleDelete(productId){
     //cancelling during editing items
@@ -29,51 +31,39 @@ const ProductList = ({items, setItems}) => {
       setEditingId(productId);
     }
   }
-  // return (
-  //   <>
-  //       {items.length == 0 ? (<p>Please add items to your list</p>):
-  //       (
-  //       <div style={{padding: "1rem"}}>
-  //       <button>select</button>
-  //       <button style={{marginInline:"0.5rem"}}>select all</button>
-  //       <button>remove all</button>
-     
-  //       <ul>
-  //           {items.map((product)=>(
-  //               <li key={product.id}>
-  //                 {editingId === product.id? (                   
-  //                   <input type="text"
-  //                   onChange={(e)=>setSaveItems(e.target.value)}
-  //                   value={saveItems} />                  
-  //                 ) : (                 
-  //                  product.listName  
-  //                 )}{" "}
-  //                 <button onClick={()=>handleSave(product.id)}>
-  //                   {editingId === product.id ? "Save": "Edit"}
-  //                   </button>{" "}
-  //                 <button onClick={()=>handleDelete(product.id)}>
-  //                 {editingId === product.id ? "Cancel": "Delete"}
-  //                 </button>
-  //               </li>                             
-  //           ))} 
-  //       </ul> 
-  //       </div>
-  //     )}       
-  //   </>
-  // )
+
+ function handleBoxChange(productId){
+    setSelectedIds(prev =>
+      prev.includes(productId)
+      ? prev.filter(itemId => itemId !== productId) //uncheck
+      : [...prev,productId] // putting check values intor the array
+    );
+  }
+ function handleRemoveSelected(){
+    setItems(prev=> prev.filter(item=>!selectedIds.includes(item.id)));
+    setSelectedIds([]);
+  }
   return (
     <>
         {items.length == 0 ? (<p>Please add items to your list</p>):
         (
         <div style={{padding: "1rem"}}>
-        <button>select</button>
+        <button onClick={()=>setIsSelect(prev => !prev)}>select</button>
         <button style={{marginInline:"0.5rem"}}>select all</button>
-        <button>remove all</button>
+        <button>remove all</button>{" "}
+        <button onClick={handleRemoveSelected}>remove selected item</button>
      
         <ul>
             {items.map((product)=>(
-                <li key={product.id} style={{listStyle:"none"}}>
-                  <input type="checkbox" />
+
+                <li key={product.id}>
+                  {isSelect && 
+                  <input 
+                    type="checkbox"
+                    checked={selectedIds.includes(product.id)}
+                    onChange={()=>handleBoxChange(product.id)}
+                    />}{" "}
+                  
                   {editingId === product.id? (                   
                     <input type="text"
                     onChange={(e)=>setSaveItems(e.target.value)}
