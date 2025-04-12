@@ -43,15 +43,25 @@ const ProductList = ({items, setItems}) => {
     setItems(prev=> prev.filter(item=>!selectedIds.includes(item.id)));
     setSelectedIds([]);
   }
+
+  //toggle select all
+  function handleAllSelect(){
+    selectedIds.length === items.length
+    ? setSelectedIds([])
+    : setSelectedIds(items.map((item)=>item.id))
+  }
   return (
     <>
         {items.length == 0 ? (<p>Please add items to your list</p>):
         (
         <div style={{padding: "1rem"}}>
         <button onClick={()=>setIsSelect(prev => !prev)}>select</button>
-        <button style={{marginInline:"0.5rem"}}>select all</button>
+        <button style={{marginInline:"0.5rem"}} 
+          onClick={handleAllSelect}
+          disable={!isSelect}
+        >{selectedIds.length === items.length ? "Deselect all" : "select all"} </button>
         <button>remove all</button>{" "}
-        <button onClick={handleRemoveSelected}>remove selected item</button>
+        <button onClick={handleRemoveSelected} disabled={selectedIds.length===0}>remove selected item</button>
      
         <ul>
             {items.map((product)=>(
@@ -60,7 +70,7 @@ const ProductList = ({items, setItems}) => {
                   {isSelect && 
                   <input 
                     type="checkbox"
-                    checked={selectedIds.includes(product.id)}
+                    checked={ selectedIds.includes(product.id)}
                     onChange={()=>handleBoxChange(product.id)}
                     />}{" "}
                   
