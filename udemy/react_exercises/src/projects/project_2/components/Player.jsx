@@ -5,7 +5,6 @@ const Player = ({ name, symbol }) => {
   const [playerName, setPlayerName] = useState(name);
 
   function handleClick() {
-    // !isPressed ? setIspressed(true) : setIspressed(false);
     setIspressed((pressed) => !pressed);
   }
   return (

@@ -13,6 +13,7 @@ const Home = () => {
       <Link to="/menu-div"> menu div app </Link>
       <Link to="/menu-bar"> menu bar projects </Link>
       <Link to="/tic-tac-toe"> tic-tac-toe</Link>
+      <Link to="/tab-button"> Tab button </Link>
     </div>
   );
 };
