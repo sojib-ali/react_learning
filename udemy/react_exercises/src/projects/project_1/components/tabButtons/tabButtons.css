@@ -1,0 +1,7 @@
+.active {
+  background-color: greenyellow;
+}
+.tabMenu {
+  display: flex;
+  gap: 0.5rem;
+}

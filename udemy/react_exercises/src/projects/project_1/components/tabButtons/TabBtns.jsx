@@ -1,7 +1,9 @@
-const TabBtns = ({ children, onSelect }) => {
+const TabBtns = ({ children, onSelect, isSelect }) => {
   return (
     <li style={{ listStyle: "none" }}>
-      <button onClick={onSelect}>{children}</button>
+      <button onClick={onSelect} className={isSelect ? "active" : undefined}>
+        {children}
+      </button>
     </li>
   );
 };
