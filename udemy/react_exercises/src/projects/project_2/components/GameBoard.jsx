@@ -5,7 +5,7 @@ const initialGameBoard = [
   [null, null, null],
   [null, null, null],
 ];
-const GameBoard = (onSelectSquare, activePlayerSymbol) => {
+const GameBoard = ({ onSelectSquare, activePlayerSymbol }) => {
   const [gameBoard, setGameBoard] = useState(initialGameBoard);
 
   function handleClick(colIndex, rowIndex) {
@@ -13,7 +13,7 @@ const GameBoard = (onSelectSquare, activePlayerSymbol) => {
       const updateBoard = [
         ...prevGameBoard.map((innerArray) => [...innerArray]),
       ];
-      updateBoard[rowIndex][colIndex] = { activePlayerSymbol };
+      updateBoard[rowIndex][colIndex] = activePlayerSymbol;
       return updateBoard;
     });
     onSelectSquare();

@@ -8,7 +8,7 @@ const Player = ({ name, symbol, isActive }) => {
     setIspressed((pressed) => !pressed);
   }
   return (
-    <li className={isActive ? "active" : undefined}>
+    <li className={isActive ? "activ" : undefined}>
       <span className="player">
         <span className="player-name">
           {isPressed ? (
