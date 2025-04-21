@@ -26,7 +26,7 @@ const TicTacTo = () => {
   // const [activePlayer, setActivePlayer] = useState("X");
   const activePlayer = deriveActivePlayer(gameTurn);
 
-  let gameBoard = initialGameBoard;
+  let gameBoard = [...initialGameBoard.map((array) => [...array])];
 
   for (const turn of gameTurn) {
     const { square, player } = turn;
@@ -68,6 +68,10 @@ const TicTacTo = () => {
       return updatedTurns;
     });
   }
+
+  function handleRestart() {
+    setGameTurns([]);
+  }
   return (
     <>
       <header>
@@ -88,7 +92,9 @@ const TicTacTo = () => {
               isActive={activePlayer === "O"}
             />
           </ol>
-          {(winner || hasDraw) && <GameOver winner={winner} />}
+          {(winner || hasDraw) && (
+            <GameOver winner={winner} onRestart={handleRestart} />
+          )}
           <GameBoard onSelectSquare={handleSelectSquare} board={gameBoard} />
         </div>
         <Log turns={gameTurn} />
