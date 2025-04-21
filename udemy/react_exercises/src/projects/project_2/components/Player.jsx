@@ -1,11 +1,14 @@
 import { useState } from "react";
 
-const Player = ({ name, symbol, isActive }) => {
+const Player = ({ name, symbol, isActive, onChangeName }) => {
   const [isPressed, setIspressed] = useState(false);
   const [playerName, setPlayerName] = useState(name);
 
   function handleClick() {
     setIspressed((pressed) => !pressed);
+    if (isPressed) {
+      onChangeName(symbol, playerName);
+    }
   }
   return (
     <li className={isActive ? "activ" : undefined}>
