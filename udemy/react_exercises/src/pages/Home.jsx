@@ -14,6 +14,9 @@ const Home = () => {
       <Link to="/menu-bar"> menu bar projects </Link>
       <Link to="/tic-tac-toe"> tic-tac-toe</Link>
       <Link to="/tab-button"> Tab button </Link>
+      <Link to="/investment-calculator">
+        Practice project - Investment Calculator
+      </Link>
     </div>
   );
 };
