@@ -1,21 +1,55 @@
-const InvestResult = ({ duration }) => {
-  const years = [];
-  for (let i = 1; i <= Number(duration); i++) {
-    years.push(
-      <tr key={i}>
-        <td>{i}</td>
-      </tr>
-    );
-  }
+// import { formatter } from "./Calc_investResult";
+// const InvestResult = ({ annualData }) => {
+//   return (
+//     <table>
+//       <thead>
+//         <tr>
+//           <th>Year</th>
+//           <th>Investment value</th>
+//           <th>Interest (year)</th>
+//           <th>Invested Capital</th>
+//         </tr>
+//       </thead>
+//       <tbody>
+//         {annualData.map((yrData) => (
+//           <tr key={yrData.year}>
+//             <td>{yrData.year}</td>
+//             <td>{formatter.format(yrData.valueEndOfYear)}</td>
+//             <td>{formatter.format(yrData.interest)}</td>
+//             <td>{formatter.format(yrData.annualInvestment * yrData.year)}</td>
+//           </tr>
+//         ))}
+//       </tbody>
+//     </table>
+//   );
+// };
+
+// export default InvestResult;
+
+import { formatter } from "./Calc_investResult";
+
+const InvestResult = ({ annualData }) => {
   return (
     <table>
       <thead>
         <tr>
-          <th>year</th> <th>Investment value</th> <th>Investment value</th>{" "}
-          <th>Invest(year)</th> <th>Invested capital</th>{" "}
+          <th>Year</th>
+          <th>Investment Value</th>
+          <th>Interest (Year)</th>
+          <th>Invested Capital</th>
         </tr>
       </thead>
-      <tbody>{years}</tbody>
+      <tbody>
+        {annualData.map((yrData) => (
+          <tr key={yrData.year}>
+            <td>{yrData.year}</td>
+            <td>{formatter.format(yrData.valueEndOfYear)}</td>
+            <td>{formatter.format(yrData.interest)}</td>
+            {/* The Invested Capital is just the annual investment multiplied by the year number */}
+            <td>{formatter.format(yrData.annualInvestment * yrData.year)}</td>
+          </tr>
+        ))}
+      </tbody>
     </table>
   );
 };

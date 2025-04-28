@@ -1,9 +1,14 @@
-const InvestInput = ({ label, handleInput, value }) => {
+const InvestInput = ({ label, handleInput, value, name }) => {
   return (
     <>
-      <label htmlFor={label}>{label}</label>{" "}
-      <input type="number" onChange={handleInput} value={value} />
-      {/* <InvestResult duration={inputValue} /> */}
+      <label htmlFor={name}>{label}</label>{" "}
+      <input
+        type="number"
+        name={name}
+        onChange={handleInput}
+        value={value}
+        id={name}
+      />
     </>
   );
 };
