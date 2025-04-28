@@ -3,3 +3,76 @@
   flex-direction: column;
   width: 20%;
 }
+
+.main-content {
+  display: grid;
+  place-items: center;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 1rem;
+  min-width: 300px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: center;
+  font-weight: bold;
+}
+
+th,
+td {
+  padding: 12px 15px;
+  text-align: center;
+}
+
+tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f3f3f3;
+}
+
+tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+
+tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.input-field {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.input-field label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.input-field input {
+  padding: 10px;
+  width: 100%;
+  max-width: 250px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.input-field input:focus {
+  border-color: #009879;
+  box-shadow: 0 0 5px rgba(0, 152, 121, 0.5);
+}

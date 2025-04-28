@@ -174,43 +174,45 @@ const InvestCalc = () => {
       <header>
         <h3>Investment Calculator</h3>
       </header>
-      <div className="input-field">
-        <InvestInput
-          label="Initial investment"
-          handleInput={handleInput}
-          value={inputValue.initialInvest}
-          name="initialInvest"
-        />
-        <InvestInput
-          label="Annual investment"
-          handleInput={handleInput}
-          value={inputValue.annualInvest}
-          name="annualInvest"
-        />
-        <InvestInput
-          label="Expected return"
-          handleInput={handleInput}
-          value={inputValue.expectedReturn}
-          name="expectedReturn"
-        />
-        <InvestInput
-          label="Duration (years)"
-          handleInput={handleInput}
-          value={inputValue.duration}
-          name="duration"
-        />
-      </div>
-      <div>
-        {/* Render Calc_investResult only if inputs are valid */}
-        {/* {isValidInputs && ( */}
-        <Calc_investResult
-          initialInvestment={parsedInputs.initialInvest}
-          annualInvestment={parsedInputs.annualInvest}
-          expectedReturn={parsedInputs.expectedReturn}
-          duration={parsedInputs.duration}
-        />
-        {/* )} */}
-        {/* {!isValidInputs && <p>Please enter valid input values.</p>} */}
+      <div className="main-content">
+        <div className="input-field">
+          <InvestInput
+            label="Initial investment"
+            handleInput={handleInput}
+            value={inputValue.initialInvest}
+            name="initialInvest"
+          />
+          <InvestInput
+            label="Annual investment"
+            handleInput={handleInput}
+            value={inputValue.annualInvest}
+            name="annualInvest"
+          />
+          <InvestInput
+            label="Expected return"
+            handleInput={handleInput}
+            value={inputValue.expectedReturn}
+            name="expectedReturn"
+          />
+          <InvestInput
+            label="Duration (years)"
+            handleInput={handleInput}
+            value={inputValue.duration}
+            name="duration"
+          />
+        </div>
+        <div>
+          {/* Render Calc_investResult only if inputs are valid */}
+          {/* {isValidInputs && ( */}
+          <Calc_investResult
+            initialInvestment={parsedInputs.initialInvest}
+            annualInvestment={parsedInputs.annualInvest}
+            expectedReturn={parsedInputs.expectedReturn}
+            duration={parsedInputs.duration}
+          />
+          {/* )} */}
+          {/* {!isValidInputs && <p>Please enter valid input values.</p>} */}
+        </div>
       </div>
     </>
   );
