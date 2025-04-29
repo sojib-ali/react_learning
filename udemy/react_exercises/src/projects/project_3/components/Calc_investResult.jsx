@@ -6,23 +6,17 @@ const Calc_investResult = ({
   expectedReturn,
   duration,
 }) => {
-  // Convert the inputs to numbers to ensure proper calculations
-  const initInvest = parseFloat(initialInvestment);
-  const annInvest = parseFloat(annualInvestment);
-  const expectedRet = parseFloat(expectedReturn);
-  const years = parseInt(duration, 10);
-
   const annualData = [];
-  let investmentValue = initInvest;
+  let investmentValue = initialInvestment;
 
-  for (let i = 0; i < years; i++) {
-    const interestEarnedInYear = investmentValue * (expectedRet / 100);
-    investmentValue += interestEarnedInYear + annInvest;
+  for (let i = 0; i < duration; i++) {
+    const interestEarnedInYear = investmentValue * (expectedReturn / 100);
+    investmentValue += interestEarnedInYear + annualInvestment;
     annualData.push({
       year: i + 1,
       interest: interestEarnedInYear,
       valueEndOfYear: investmentValue,
-      annualInvestment: annInvest,
+      annualInvestment: annualInvestment,
     });
   }
   console.log(annualData);
