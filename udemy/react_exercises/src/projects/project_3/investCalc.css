@@ -1,4 +1,4 @@
-.input-field {
+/* .input-field {
   display: flex;
   flex-direction: column;
   width: 20%;
@@ -75,4 +75,4 @@ tbody tr:hover {
 .input-field input:focus {
   border-color: #009879;
   box-shadow: 0 0 5px rgba(0, 152, 121, 0.5);
-}
+} */
