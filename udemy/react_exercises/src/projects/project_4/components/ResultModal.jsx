@@ -1,10 +1,17 @@
 
 // const ResultModal = forwardRef(function ResultModal({targetTime, result}, ref) { for older version}
+import './../styles/game.css';
 
 import {useRef, useImperativeHandle} from 'react';
+import { createPortal } from 'react-dom';
 
-const ResultModal = ({ref, targetTime, result}) => {
- const dialog = useRef();
+const ResultModal = ({ref, targetTime, remainingTime, onReset}) => {
+ 
+  const dialog = useRef();
+
+ const userLost = remainingTime <=0;
+ const formattedRemainingTime = (remainingTime / 1000).toFixed(2);
+ const score = Math.round((1 - remainingTime / (targetTime*1000)) * 100)
 
   useImperativeHandle(ref,()=>{
     return{
@@ -13,16 +20,18 @@ const ResultModal = ({ref, targetTime, result}) => {
       }
     }
   })
-  return (
+  return createPortal(
     <dialog ref={dialog} className="result-modal" >
-        <h2> You {result}</h2>
+        {userLost && <h2> You lost</h2>}
+        {!userLost && <h2>Your Score: {score}</h2> }
         <p>The target was <strong>{targetTime}</strong></p>
-        <p>You stopped the timer with <strong>X seconds left</strong></p>
-        <form method="dialog">
+        <p>You stopped the timer with <strong>{formattedRemainingTime} seconds left</strong></p>
+        <form method="dialog" onSubmit={onReset}>
             <button>Close</button>
         </form>
-    </dialog>
-  )
+    </dialog>,
+    document.getElementById('modal')
+  );
 }
 
 export default ResultModal

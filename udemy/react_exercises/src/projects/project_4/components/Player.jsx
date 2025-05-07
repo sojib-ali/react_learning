@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import './../styles/game.css'
 
 export default function Player() {
   const[nameSubmit, setNameSubmit] = useState(null);
