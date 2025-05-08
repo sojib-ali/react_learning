@@ -1,11 +1,64 @@
-const ProjectForm = () => {
+import { useState } from "react"
+import ProjectDetails from "./ProjectDetails";
+
+const ProjectForm = ({inputValue,setInputValue}) => {
+  
+    const[saveProjects, setSaveProjects] = useState(false);
+
+    function handleInput(e){
+        const{name, value} =e.target;
+        setInputValue((prev)=>({
+            ...prev,
+            [name]: value,
+        }))
+    }
   return (
-    <form action="">
-        <label htmlFor="">Project Title</label>
-        <input type="text" value="" />
-        <label htmlFor="">Description</label>
-        <textarea name="" id=""></textarea>
-    </form>
+    <>
+     {saveProjects ? 
+        <div>
+            <ProjectDetails formValue={inputValue}/>
+        </div>
+        :
+        <div className="project-form_wrapper">
+            <form className="project-form" action="">
+                <div className="form-input">
+                    <label htmlFor="">Project Title</label>
+                    <input 
+                        type="text" 
+                        value={inputValue.projectTitle} 
+                        onChange={handleInput}
+                        name="projectTitle"
+                    />
+                </div>
+                
+                <div className="form-input">
+                    <label htmlFor="">Description</label>
+                    <textarea 
+                        type="text"
+                        name="description"
+                        value={inputValue.description}
+                        onChange={handleInput}
+                    />
+                </div>
+
+                <div className="form-input">
+                    <label htmlFor="">Due Date</label>
+                    <input 
+                        type="date"
+                        name="dueDate"
+                        value={inputValue.dueDate}
+                        onChange={handleInput}
+                    />
+                </div>
+            </form>
+            <div className="form-button">
+                <button>Cancel</button>
+                <button onClick={()=>setSaveProjects(true)}>Save</button>
+            </div>
+        </div>
+        }
+       
+    </>
   )
 }
 

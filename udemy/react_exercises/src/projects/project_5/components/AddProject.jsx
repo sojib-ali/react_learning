@@ -1,7 +1,13 @@
 import { useState } from "react";
 import ProjectForm from "./ProjectForm";
 
-export function AddProjects({showProjectForm, setProjectForm}){
+import noProjectIcon from './../assets/noProjects.png'
+export function AddProjects({
+  showProjectForm,
+  setProjectForm,
+  inputValue,
+  setInputValue
+}){
 
 
   return(
@@ -9,11 +15,17 @@ export function AddProjects({showProjectForm, setProjectForm}){
 
       {showProjectForm ? 
       
-      <ProjectForm /> 
+      <ProjectForm 
+        inputValue = {inputValue}
+        setInputValue = {setInputValue}
+      /> 
       
-      : <p>
+      : <div className="no-project">
+          <img className="no-projectIcon" src={noProjectIcon} alt="no-project icon" />
+          <h3>No Project Selected</h3>
+          <p>Select a project or get started with a new one</p>
           <button onClick={()=>setProjectForm(true)}>Create projects</button>
-        </p>
+        </div>
       }
       
     </>
