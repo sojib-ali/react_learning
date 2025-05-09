@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import './ProjectPlanner.css';
 import { AddProjects } from './components/AddProject';
 import Sidebar from './components/Sidebar';
@@ -10,18 +10,24 @@ const ProjectPlanner = () => {
         description:"",
         dueDate:"",
     })
-    // const inputValue = useRef({
-    //     projectTitle:"",
-    //     description:"",
-    //     dueDate:"",
-    // })
+    const[savedProject, setSavedProject] = useState([]);
+    const[saveProjects, setSaveProjects] = useState(false);
+    const[selectedProject, setSelectedProject] = useState(null)
+    
   return (
     <>
         <main className='main-content'>
             <section className='sidebar'>
                 <Sidebar 
                     setProjectForm={setProjectForm}
-                    inputValue = {inputValue}
+                    savedProject = {savedProject}
+                    setSaveProjects ={setSaveProjects}
+                    setSavedProject = {setSavedProject}
+                    setInputValue = {setInputValue}
+                    saveProjects={saveProjects}
+                    showProjectForm = {showProjectForm}
+                    setSelectedProject = {setSelectedProject}
+
                 />
             </section>
 
@@ -30,6 +36,11 @@ const ProjectPlanner = () => {
                     showProjectForm={showProjectForm} setProjectForm={setProjectForm}
                     inputValue = {inputValue}
                     setInputValue = {setInputValue}
+                    setSavedProject = {setSavedProject}
+                    setSaveProjects ={setSaveProjects}
+                    saveProjects = {saveProjects}
+                    savedProject ={savedProject}
+                    selectedProject ={selectedProject}
                 />
             </section>
         </main>

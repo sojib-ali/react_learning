@@ -1,9 +1,17 @@
 import { useState } from "react"
 import ProjectDetails from "./ProjectDetails";
 
-const ProjectForm = ({inputValue,setInputValue}) => {
+const ProjectForm = ({
+    inputValue,setInputValue, 
+    setSavedProject, 
+    setProjectForm,
+    saveProjects,
+    setSaveProjects,
+    savedProject,
+    selectedProject
+    }) => {
   
-    const[saveProjects, setSaveProjects] = useState(false);
+   
 
     function handleInput(e){
         const{name, value} =e.target;
@@ -16,7 +24,7 @@ const ProjectForm = ({inputValue,setInputValue}) => {
     <>
      {saveProjects ? 
         <div>
-            <ProjectDetails formValue={inputValue}/>
+            <ProjectDetails formValue={selectedProject}/>
         </div>
         :
         <div className="project-form_wrapper">
@@ -53,7 +61,11 @@ const ProjectForm = ({inputValue,setInputValue}) => {
             </form>
             <div className="form-button">
                 <button>Cancel</button>
-                <button onClick={()=>setSaveProjects(true)}>Save</button>
+                <button onClick={()=>{
+                    setSavedProject((prev) => [...prev, inputValue]);
+                    setSaveProjects(true);
+                    setProjectForm(false);
+                }}>Save</button>
             </div>
         </div>
         }

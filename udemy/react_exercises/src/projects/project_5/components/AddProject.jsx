@@ -6,18 +6,31 @@ export function AddProjects({
   showProjectForm,
   setProjectForm,
   inputValue,
-  setInputValue
+  setInputValue,
+  setSavedProject,
+  setSaveProjects,
+  saveProjects,
+  savedProject,
+  selectedProject
 }){
+  // const [createProject, setCreateProject] = useState(false);
 
 
   return(
     <>
 
-      {showProjectForm ? 
+      {showProjectForm  ? 
       
       <ProjectForm 
         inputValue = {inputValue}
         setInputValue = {setInputValue}
+        setSavedProject = {setSavedProject}
+        setProjectForm = {setProjectForm}
+        
+        saveProjects = {saveProjects}
+        setSaveProjects ={setSaveProjects}
+        savedProject = {savedProject}
+        selectedProject = {selectedProject}
       /> 
       
       : <div className="no-project">
