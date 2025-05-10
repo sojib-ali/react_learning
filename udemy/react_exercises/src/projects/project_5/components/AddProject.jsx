@@ -11,7 +11,9 @@ export function AddProjects({
   setSavedProject,
   selectedProject,
   savedProject,
-  setSelectedProject
+  setSelectedProject,
+  setTasksByProject,
+  tasksByProject
 
 }){
   
@@ -34,9 +36,17 @@ export function AddProjects({
         </div>
         ) : (
           selectedProject.projectTitle ? (
-            <ProjectDetails formValue={selectedProject}/>
+            <ProjectDetails 
+              formValue={selectedProject}
+              tasksByProject = {tasksByProject}
+              setTasksByProject={setTasksByProject}
+              setSelectedProject = {setSelectedProject}
+              savedProject = {savedProject}
+              setSavedProject = {setSavedProject}
+            
+            />
           ) : (
-            <ProjectForm 
+            <ProjectForm
               inputValue = {inputValue}
               setInputValue = {setInputValue}
               setSavedProject = {setSavedProject}             

@@ -1,7 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Handjet:wght@400;700&display=swap');
 
 body{
     background-color: rgb(245, 242, 242);
-    margin:0
+    margin:0;
+    font-family: 'Quicksand', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 .main-content{
     display: grid;
@@ -18,7 +22,7 @@ body{
     border-top-right-radius: 0.5rem;
     height: 100%;
 }
-.project-details{
+.default-project{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -30,6 +34,7 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* margin-top:30%; */
 }
 
 .no-projectIcon{
@@ -42,6 +47,7 @@ body{
     flex-direction: column;
     row-gap: 2rem; 
     width:50%;
+    margin:25% auto;
 }
 
 .form-input{

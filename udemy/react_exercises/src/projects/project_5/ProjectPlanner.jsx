@@ -11,6 +11,7 @@ const ProjectPlanner = () => {
     })
     const[savedProject, setSavedProject] = useState([]);
     const[selectedProject, setSelectedProject] = useState(null);
+    const[tasksByProject, setTasksByProject] = useState({});
     
   return (
     <>
@@ -23,7 +24,7 @@ const ProjectPlanner = () => {
                 />
             </section>
 
-            <section className='project-details'>
+            <section className={!selectedProject ? 'default-project' : 'project-details'}>
                 <AddProjects 
                     inputValue = {inputValue}
                     setInputValue = {setInputValue}
@@ -31,6 +32,9 @@ const ProjectPlanner = () => {
                     selectedProject ={selectedProject}
                     savedProject = {savedProject}
                     setSelectedProject = {setSelectedProject}
+                    tasksByProject = {tasksByProject}
+                    setTasksByProject={setTasksByProject}
+
                 />
             </section>
         </main>
