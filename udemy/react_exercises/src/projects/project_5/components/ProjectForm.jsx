@@ -1,14 +1,8 @@
-import { useState } from "react"
-import ProjectDetails from "./ProjectDetails";
 
 const ProjectForm = ({
     inputValue,
     setInputValue, 
     setSavedProject, 
-    setProjectForm,
-    saveProjects,
-    setSaveProjects,
-    selectedProject,
     savedProject,
     setSelectedProject
     }) => {
@@ -21,12 +15,7 @@ const ProjectForm = ({
         }))
     }
   return (
-    <>
-     {saveProjects ? 
-        <div>
-            <ProjectDetails formValue={selectedProject}/>
-        </div>
-        :
+    <>     
         <div className="project-form_wrapper">
             <form className="project-form" action="">
                 <div className="form-input">
@@ -61,14 +50,17 @@ const ProjectForm = ({
             </form>
             <div className="form-button">
                 <button onClick={()=>{
-                    setProjectForm(false) 
+                    if(savedProject.length > 0){
+                        setSelectedProject(savedProject[savedProject.length-1]); 
+                    }else{
+                        setSelectedProject(null)
+                    }
                     }}>Cancel</button>
                 
 
                 <button onClick={()=>{
-                    setSavedProject((prev) => [...prev, inputValue]);
-                    setSaveProjects(true);
-                    setProjectForm(true);
+ 
+                    setSavedProject([...savedProject, inputValue]);                   
                     setSelectedProject(inputValue)
                     
                 }}>Save</button>
@@ -76,7 +68,6 @@ const ProjectForm = ({
            
             </div>
         </div>
-        }
        
     </>
   )

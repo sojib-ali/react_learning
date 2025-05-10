@@ -9,33 +9,25 @@ const ProjectPlanner = () => {
         description:"",
         dueDate:"",
     })
-    const [showProjectForm, setProjectForm] = useState(false);
     const[savedProject, setSavedProject] = useState([]);
-    const[saveProjects, setSaveProjects] = useState(false);
-    const[selectedProject, setSelectedProject] = useState("")
+    const[selectedProject, setSelectedProject] = useState(null);
     
   return (
     <>
         <main className='main-content'>
             <section className='sidebar'>
                 <Sidebar 
-                    setProjectForm={setProjectForm}
-                    savedProject = {savedProject}
-                    setSaveProjects ={setSaveProjects}                   
+                    savedProject = {savedProject}                  
                     setInputValue = {setInputValue}          
                     setSelectedProject = {setSelectedProject}
-
                 />
             </section>
 
             <section className='project-details'>
                 <AddProjects 
-                    showProjectForm={showProjectForm} setProjectForm={setProjectForm}
                     inputValue = {inputValue}
                     setInputValue = {setInputValue}
                     setSavedProject = {setSavedProject}
-                    setSaveProjects ={setSaveProjects}
-                    saveProjects = {saveProjects}
                     selectedProject ={selectedProject}
                     savedProject = {savedProject}
                     setSelectedProject = {setSelectedProject}

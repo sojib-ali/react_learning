@@ -1,11 +1,6 @@
 
-import { useState } from "react";
-import ProjectDetails from "./ProjectDetails"
-
 const Sidebar = ({
-  setProjectForm, 
-  savedProject, 
-  setSaveProjects, 
+  savedProject,  
   setInputValue,
   setSelectedProject
 }) => {
@@ -13,9 +8,7 @@ const Sidebar = ({
     <section>
       <h2>Your Projects</h2>
       <button onClick={()=>{
-        
-        setProjectForm(true)
-        setSaveProjects(false);
+        setSelectedProject({})
         setInputValue({
           projectTitle:"",
           description:"",
@@ -29,10 +22,7 @@ const Sidebar = ({
         savedProject.map((project) => (
           <p key={project.projectTitle} 
             onClick={() =>{
-              setSelectedProject(project)
-              setProjectForm(true)
-              setSaveProjects(true)
-            
+              setSelectedProject(project)            
               }}>
               {project.projectTitle}
           </p>

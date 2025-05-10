@@ -1,15 +1,14 @@
-import { useState } from "react";
+
 import ProjectForm from "./ProjectForm";
 
-import noProjectIcon from './../assets/noProjects.png'
+import noProjectIcon from './../assets/noProjects.png';
+import ProjectDetails from "./ProjectDetails";
+
 export function AddProjects({
-  showProjectForm,
-  setProjectForm,
+
   inputValue,
   setInputValue,
   setSavedProject,
-  setSaveProjects,
-  saveProjects,
   selectedProject,
   savedProject,
   setSelectedProject
@@ -17,28 +16,15 @@ export function AddProjects({
 }){
   
   return(
-    <>
-      {showProjectForm  ? 
-      
-      <ProjectForm 
-        inputValue = {inputValue}
-        setInputValue = {setInputValue}
-        setSavedProject = {setSavedProject}
-        setProjectForm = {setProjectForm}        
-        saveProjects = {saveProjects}
-        setSaveProjects ={setSaveProjects}       
-        selectedProject = {selectedProject}
-        savedProject = {savedProject}
-        setSelectedProject = {setSelectedProject}
-      /> 
-      
-      : <div className="no-project">
+    <>     
+
+      {selectedProject === null ? (
+        <div className="no-project">
           <img className="no-projectIcon" src={noProjectIcon} alt="no-project icon" />
           <h3>No Project Selected</h3>
           <p>Select a project or get started with a new one</p>
           <button onClick={()=>{
-            setProjectForm(true);
-            setSaveProjects(false);
+            setSelectedProject({})
             setInputValue({
               projectTitle:"",
               description:"",
@@ -46,6 +32,20 @@ export function AddProjects({
             })
           }}>Create projects</button>
         </div>
+        ) : (
+          selectedProject.projectTitle ? (
+            <ProjectDetails formValue={selectedProject}/>
+          ) : (
+            <ProjectForm 
+              inputValue = {inputValue}
+              setInputValue = {setInputValue}
+              setSavedProject = {setSavedProject}             
+              selectedProject = {selectedProject}
+              savedProject = {savedProject}
+              setSelectedProject = {setSelectedProject}
+            /> 
+          )
+        )
       }
       
     </>
