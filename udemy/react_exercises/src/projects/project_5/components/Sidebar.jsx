@@ -2,26 +2,19 @@
 import { useState } from "react";
 import ProjectDetails from "./ProjectDetails"
 
-const Sidebar = ({setProjectForm, 
+const Sidebar = ({
+  setProjectForm, 
   savedProject, 
   setSaveProjects, 
-  setSavedProject,
   setInputValue,
-  saveProjects,
-  showProjectForm,
   setSelectedProject
 }) => {
-
-
-
-  
   return (
     <section>
       <h2>Your Projects</h2>
       <button onClick={()=>{
         
         setProjectForm(true)
-        // setSavedProject(null);
         setSaveProjects(false);
         setInputValue({
           projectTitle:"",
@@ -31,17 +24,14 @@ const Sidebar = ({setProjectForm,
         
       }}
         >+Add Projects</button>
-      
-      {/* <p onClick={()=>setProjectForm(true)}>
-        {savedProject?.projectTitle ?? 'No project added'}
-        </p> */}
+
       {savedProject.length > 0 ? (
         savedProject.map((project) => (
           <p key={project.projectTitle} 
             onClick={() =>{
-              // setSaveProjects(true)
               setSelectedProject(project)
               setProjectForm(true)
+              setSaveProjects(true)
             
               }}>
               {project.projectTitle}
@@ -50,8 +40,6 @@ const Sidebar = ({setProjectForm,
       ) : (
         <p>No project added</p>
         )}
-
-       {/* {showProjectForm && <ProjectDetails /> } */}
 
     </section>
   )

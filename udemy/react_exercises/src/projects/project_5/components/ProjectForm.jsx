@@ -2,17 +2,17 @@ import { useState } from "react"
 import ProjectDetails from "./ProjectDetails";
 
 const ProjectForm = ({
-    inputValue,setInputValue, 
+    inputValue,
+    setInputValue, 
     setSavedProject, 
     setProjectForm,
     saveProjects,
     setSaveProjects,
+    selectedProject,
     savedProject,
-    selectedProject
+    setSelectedProject
     }) => {
   
-   
-
     function handleInput(e){
         const{name, value} =e.target;
         setInputValue((prev)=>({
@@ -60,12 +60,20 @@ const ProjectForm = ({
                 </div>
             </form>
             <div className="form-button">
-                <button>Cancel</button>
+                <button onClick={()=>{
+                    setProjectForm(false) 
+                    }}>Cancel</button>
+                
+
                 <button onClick={()=>{
                     setSavedProject((prev) => [...prev, inputValue]);
                     setSaveProjects(true);
-                    setProjectForm(false);
+                    setProjectForm(true);
+                    setSelectedProject(inputValue)
+                    
                 }}>Save</button>
+
+           
             </div>
         </div>
         }

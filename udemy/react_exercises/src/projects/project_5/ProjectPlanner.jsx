@@ -4,15 +4,15 @@ import { AddProjects } from './components/AddProject';
 import Sidebar from './components/Sidebar';
 
 const ProjectPlanner = () => {
-    const [showProjectForm, setProjectForm] = useState(false);
     const[inputValue, setInputValue] = useState({
         projectTitle:"",
         description:"",
         dueDate:"",
     })
+    const [showProjectForm, setProjectForm] = useState(false);
     const[savedProject, setSavedProject] = useState([]);
     const[saveProjects, setSaveProjects] = useState(false);
-    const[selectedProject, setSelectedProject] = useState(null)
+    const[selectedProject, setSelectedProject] = useState("")
     
   return (
     <>
@@ -21,11 +21,8 @@ const ProjectPlanner = () => {
                 <Sidebar 
                     setProjectForm={setProjectForm}
                     savedProject = {savedProject}
-                    setSaveProjects ={setSaveProjects}
-                    setSavedProject = {setSavedProject}
-                    setInputValue = {setInputValue}
-                    saveProjects={saveProjects}
-                    showProjectForm = {showProjectForm}
+                    setSaveProjects ={setSaveProjects}                   
+                    setInputValue = {setInputValue}          
                     setSelectedProject = {setSelectedProject}
 
                 />
@@ -39,8 +36,9 @@ const ProjectPlanner = () => {
                     setSavedProject = {setSavedProject}
                     setSaveProjects ={setSaveProjects}
                     saveProjects = {saveProjects}
-                    savedProject ={savedProject}
                     selectedProject ={selectedProject}
+                    savedProject = {savedProject}
+                    setSelectedProject = {setSelectedProject}
                 />
             </section>
         </main>

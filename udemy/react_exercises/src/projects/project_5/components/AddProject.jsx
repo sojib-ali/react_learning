@@ -10,34 +10,41 @@ export function AddProjects({
   setSavedProject,
   setSaveProjects,
   saveProjects,
+  selectedProject,
   savedProject,
-  selectedProject
+  setSelectedProject
+
 }){
-  // const [createProject, setCreateProject] = useState(false);
-
-
+  
   return(
     <>
-
       {showProjectForm  ? 
       
       <ProjectForm 
         inputValue = {inputValue}
         setInputValue = {setInputValue}
         setSavedProject = {setSavedProject}
-        setProjectForm = {setProjectForm}
-        
+        setProjectForm = {setProjectForm}        
         saveProjects = {saveProjects}
-        setSaveProjects ={setSaveProjects}
-        savedProject = {savedProject}
+        setSaveProjects ={setSaveProjects}       
         selectedProject = {selectedProject}
+        savedProject = {savedProject}
+        setSelectedProject = {setSelectedProject}
       /> 
       
       : <div className="no-project">
           <img className="no-projectIcon" src={noProjectIcon} alt="no-project icon" />
           <h3>No Project Selected</h3>
           <p>Select a project or get started with a new one</p>
-          <button onClick={()=>setProjectForm(true)}>Create projects</button>
+          <button onClick={()=>{
+            setProjectForm(true);
+            setSaveProjects(false);
+            setInputValue({
+              projectTitle:"",
+              description:"",
+              dueDate:"",
+            })
+          }}>Create projects</button>
         </div>
       }
       
