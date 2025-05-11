@@ -1,3 +1,4 @@
+import { useState } from "react";
 
 const ProjectForm = ({
     inputValue,
@@ -6,6 +7,8 @@ const ProjectForm = ({
     savedProject,
     setSelectedProject
     }) => {
+    
+    const [loading, setLoading] = useState(false);
   
     function handleInput(e){
         const{name, value} =e.target;
@@ -14,17 +17,58 @@ const ProjectForm = ({
             [name]: value,
         }))
     }
+
+    async function handleSave(){
+        if(!inputValue.name || !inputValue.dueDate){
+            alert("Project title and due date are required.");
+            return;
+        }
+        setLoading(true);
+
+        try{
+            const response = await fetch("http://127.0.0.1:8000/projects/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    name: inputValue.name,
+                    description:inputValue.description,
+                    due_date: inputValue.dueDate,
+                }),
+            });
+            
+            if(!response.ok){
+                throw new Error("Failed to save project");
+            }
+
+            const newProject = await response.json();
+
+            const fetchRes = await fetch("http://127.0.0.1:8000/projects/");
+            const updatedProjects = await fetchRes.json();
+
+            setSavedProject(updatedProjects);
+            setSelectedProject(newProject)
+
+            setInputValue({name: "", description: "", dueDate: ""});
+        } catch(error){
+            console.error("Error: ", error);
+            alert("Something went wrong while saving the project.");
+        } finally{
+            setLoading(false);
+        }
+    }
   return (
     <>     
         <div className="project-form_wrapper">
-            <form className="project-form" action="">
+            <form className="project-form" onSubmit={(e)=> e.preventDefault()} action="">
                 <div className="form-input">
                     <label htmlFor="">Project Title</label>
                     <input 
                         type="text" 
-                        value={inputValue.projectTitle} 
+                        value={inputValue.name} 
                         onChange={handleInput}
-                        name="projectTitle"
+                        name="name"
                     />
                 </div>
                 
@@ -58,12 +102,16 @@ const ProjectForm = ({
                     }}>Cancel</button>
                 
 
-                <button onClick={()=>{
+                {/* <button onClick={()=>{
  
                     setSavedProject([...savedProject, inputValue]);                   
                     setSelectedProject(inputValue)
                     
-                }}>Save</button>
+                }}>Save</button> */}
+
+                <button onClick={handleSave} disabled={loading}>
+                    {loading ? "saving..." : "Save"}
+                </button>
 
            
             </div>

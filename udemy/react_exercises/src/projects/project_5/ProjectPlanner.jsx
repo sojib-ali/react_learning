@@ -1,17 +1,28 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './ProjectPlanner.css';
 import { AddProjects } from './components/AddProject';
 import Sidebar from './components/Sidebar';
 
 const ProjectPlanner = () => {
     const[inputValue, setInputValue] = useState({
-        projectTitle:"",
+        name:"",
         description:"",
         dueDate:"",
     })
     const[savedProject, setSavedProject] = useState([]);
     const[selectedProject, setSelectedProject] = useState(null);
     const[tasksByProject, setTasksByProject] = useState({});
+
+    useEffect(()=>{
+        fetch("http://127.0.0.1:8000/projects/")
+        .then((res)=>res.json())
+        .then((data) =>{
+            console.log("Fetched projects: ", data);
+            setSavedProject(data);
+            setSelectedProject(data[0] || null);
+        })
+        .catch((err) => console.error("Error loading projects:", err));
+    },[]);
     
   return (
     <>

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 
 import ProjectForm from "./ProjectForm";
 
@@ -16,6 +17,11 @@ export function AddProjects({
   tasksByProject
 
 }){
+  useEffect(() => {
+  fetch("http://127.0.0.1:8000/projects/")
+    .then((res) => res.json())
+    .then((data) => setSavedProject(data));
+}, []);
   
   return(
     <>     
@@ -28,14 +34,14 @@ export function AddProjects({
           <button onClick={()=>{
             setSelectedProject({})
             setInputValue({
-              projectTitle:"",
+              name:"",
               description:"",
               dueDate:"",
             })
           }}>Create projects</button>
         </div>
         ) : (
-          selectedProject.projectTitle ? (
+          selectedProject.name ? (
             <ProjectDetails 
               formValue={selectedProject}
               tasksByProject = {tasksByProject}

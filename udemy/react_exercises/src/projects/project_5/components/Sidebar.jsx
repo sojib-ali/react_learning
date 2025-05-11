@@ -10,7 +10,7 @@ const Sidebar = ({
       <button onClick={()=>{
         setSelectedProject({})
         setInputValue({
-          projectTitle:"",
+          name:"",
           description:"",
           dueDate:"",
         })
@@ -20,11 +20,11 @@ const Sidebar = ({
 
       {savedProject.length > 0 ? (
         savedProject.map((project) => (
-          <p key={project.projectTitle} 
+          <p key={project.id} 
             onClick={() =>{
               setSelectedProject(project)            
               }}>
-              {project.projectTitle}
+              {project.name}
           </p>
         ))
       ) : (
