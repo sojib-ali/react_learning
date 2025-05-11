@@ -36,7 +36,7 @@ const ProjectDetails = ({
       }
     }
 
-    // 🧠 Only fetch if tasks for this project aren't already loaded
+    //Only fetch if tasks for this project aren't already loaded
     if (projectId && !(projectId in tasksByProject)) {
       fetchTasks();
     }
