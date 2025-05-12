@@ -17,6 +17,7 @@ const Home = () => {
       <Link to="/investment-calculator">Practice project(1) - Investment Calculator </Link>
       <Link to="/refs-portals"> Game projects - for refs </Link>
       <Link to="/project-planner"> Practice project(2) - Project Planner </Link>
+      <Link to="/project-dashboard">Practice project(2) - project planner tutorial version</Link>
     </div>
   );
 };
