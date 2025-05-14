@@ -17,9 +17,23 @@ const ProjectDashboard = () => {
     }))
   }
 
+  function handleAddProject(projectData){
+    const projectID = Math.random();
+    const newProjects = {
+      ...projectData,
+      id: projectID
+    }
+    setProjectState((prevState)=>({
+      ...prevState,
+      selectedProjectId:undefined,
+      projects:([...prevState.projects, newProjects])
+    }))
+  }
+
+
   let content;
   if (projectState.selectedProjectId === null){
-    content = <NewProjects />
+    content = <NewProjects onAdd={handleAddProject}/>
   }else if(projectState.selectedProjectId === undefined){
     content = <NoProjectSelected onStartAddProject={handleStartAddProject}/>
 
@@ -27,7 +41,7 @@ const ProjectDashboard = () => {
 
   return (
     <main className="h-screen my-8 flex gap-8">
-        <ProjectSidebar onStartAddProject={handleStartAddProject}/>
+        <ProjectSidebar onStartAddProject={handleStartAddProject} projects = {projectState.projects} />
         {content}
     </main>
   )
