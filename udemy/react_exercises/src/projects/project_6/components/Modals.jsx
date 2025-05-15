@@ -1,3 +1,5 @@
+import Button from "./Button";
+
 const Modals = ({ children, shouldShow, setShouldShow }) => {
 //   const [shouldShow, setShouldShow] = useState(false);
 
@@ -17,11 +19,13 @@ const Modals = ({ children, shouldShow, setShouldShow }) => {
         >
           {/* to stop the bubbling so cliking on this should not be like cliking on the background  */}
           <div
-            className="bg-white mx-auto my-10 px-5 py-5 w-1/2 text-black rounded-md"
+            className="bg-white mx-auto my-10 px-5 py-5 w-1/2 text-black rounded-md "
             onClick={(e) => e.stopPropagation()}
           >
             {children}
-            <button onClick={() => setShouldShow(false)}>hide</button>
+            <div className="mt-4 text-right">
+              <Button onClick={() => setShouldShow(false)}>Okay</Button>
+            </div>
           </div>
         </div>
       )}
