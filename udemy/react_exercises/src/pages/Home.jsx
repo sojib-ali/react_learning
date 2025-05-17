@@ -18,6 +18,7 @@ const Home = () => {
       <Link to="/refs-portals"> Game projects - for refs </Link>
       <Link to="/project-planner"> Practice project(2) - Project Planner </Link>
       <Link to="/project-dashboard">Practice project(2) - project planner tutorial version</Link>
+      <Link to="/e-shop">React context and useReducer</Link>
     </div>
   );
 };
