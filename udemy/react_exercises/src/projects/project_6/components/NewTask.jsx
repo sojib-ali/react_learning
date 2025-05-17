@@ -8,6 +8,9 @@ const NewTask = ({onAdd}) => {
     }
 
     function handleClick(){
+        if(enterdTask.trim() === ''){
+            return;
+        }
         onAdd(enterdTask);
         setEnteredTask("");
     }
