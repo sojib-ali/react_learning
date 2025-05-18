@@ -26,7 +26,7 @@ const CartModal = forwardRef(function Modal(
         {actions}
       </form>
     </dialog>,
-    document.getElementById('modal')
+    document.getElementById('modal-root')
   );
 });
 
