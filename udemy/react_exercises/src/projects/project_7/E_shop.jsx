@@ -70,15 +70,13 @@ function E_shop() {
 
   const ctxValue = {
     items: shoppingCart.items,
-    addItemToCard: handleAddItemToCart
+    addItemToCard: handleAddItemToCart,
+    updateItemQuantity:handleUpdateCartItemQuantity
   }
 
   return (
     <CartContext.Provider value={ctxValue}>
-      <Header
-        cart={shoppingCart}
-        onUpdateCartItemQuantity={handleUpdateCartItemQuantity}
-      />
+      <Header />
       <Shop>
         {DUMMY_PRODUCTS.map((product) => (
           <li key={product.id}>
