@@ -14,11 +14,16 @@ const Home = () => {
       <Link to="/menu-bar"> menu bar projects </Link>
       <Link to="/tic-tac-toe"> tic-tac-toe</Link>
       <Link to="/tab-button"> Tab button </Link>
-      <Link to="/investment-calculator">Practice project(1) - Investment Calculator </Link>
+      <Link to="/investment-calculator">
+        Practice project(1) - Investment Calculator{" "}
+      </Link>
       <Link to="/refs-portals"> Game projects - for refs </Link>
       <Link to="/project-planner"> Practice project(2) - Project Planner </Link>
-      <Link to="/project-dashboard">Practice project(2) - project planner tutorial version</Link>
+      <Link to="/project-dashboard">
+        Practice project(2) - project planner tutorial version
+      </Link>
       <Link to="/e-shop">React context and useReducer</Link>
+      <Link to="/image-picker">UseEffect - image picker project</Link>
     </div>
   );
 };

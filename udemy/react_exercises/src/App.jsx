@@ -9,8 +9,9 @@ import InvestCalc from "./projects/project_3/InvestCalc";
 import GameRef from "./projects/project_4/GameRef.jsx";
 import ProjectPlanner from "./projects/project_5/ProjectPlanner.jsx";
 import ProjectDashboard from "./projects/project_6/ProjectDashboard.jsx";
-import E_shop from './projects/project_7/E_shop.jsx';
-import './tailwind.css';
+import E_shop from "./projects/project_7/E_shop.jsx";
+import ImagePicker from "./projects/project_8/ImagePicker.jsx";
+import "./tailwind.css";
 function App() {
   return (
     <BrowserRouter>
@@ -26,6 +27,7 @@ function App() {
         <Route path="/project-planner" element={<ProjectPlanner />} />
         <Route path="/project-dashboard" element={<ProjectDashboard />} />
         <Route path="/e-shop" element={<E_shop />} />
+        <Route path="/image-picker" element={<ImagePicker />} />
       </Routes>
     </BrowserRouter>
   );
