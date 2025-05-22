@@ -55,7 +55,7 @@ function ImagePicker() {
     const storedIds = JSON.parse(localStorage.getItem("selectedPlaces")) || [];
     if (storedIds.indexOf(id) === -1) {
       localStorage.setItem(
-        "selecetedPlaces",
+        "selectedPlaces",
         JSON.stringify([id, ...storedIds])
       );
     }
