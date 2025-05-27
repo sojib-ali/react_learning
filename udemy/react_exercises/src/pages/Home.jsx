@@ -24,6 +24,8 @@ const Home = () => {
       </Link>
       <Link to="/e-shop">React context and useReducer</Link>
       <Link to="/image-picker">UseEffect - image picker project</Link>
+      <Link to="/image-picker">UseEffect - image picker project</Link>
+      <Link to="/quiz-tester">Practice project - Quiz</Link>
     </div>
   );
 };
