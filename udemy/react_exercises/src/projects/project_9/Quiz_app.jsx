@@ -1,5 +1,13 @@
+import QuizProgressBar from "./components/QuizProgressBar";
+import Quizzs from "./components/Quizzs";
+
 const Quiz_app = () => {
-  return <div>Hola</div>;
+  return (
+    <section>
+      <QuizProgressBar />
+      <Quizzs />
+    </section>
+  );
 };
 
 export default Quiz_app;
