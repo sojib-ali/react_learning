@@ -1,27 +1,22 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
-const QuizProgressBar = ({ timer }) => {
-  const [remainingTime, setRemainingTime] = useState(timer);
-
+const QuizProgressBar = ({ timer, onProgress }) => {
   useEffect(() => {
+    if (timer < 10) {
+      return;
+    }
     const intervalId = setInterval(() => {
-      setRemainingTime((prevTime) => {
-        if (prevTime <= 10) {
-          clearInterval(intervalId);
-          return 0;
-        }
-        return prevTime - 10;
-      });
+      onProgress();
     }, 10);
 
     return () => {
       clearInterval(intervalId);
     };
-  }, [timer]);
+  }, [timer, onProgress]);
 
   return (
     <>
-      <progress value={remainingTime} max={timer} />
+      <progress value={timer} max={300} />
     </>
   );
 };

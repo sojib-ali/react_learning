@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import QuizProgressBar from "./components/QuizProgressBar";
 import Quizzs from "./components/Quizzs";
 
@@ -7,8 +7,15 @@ import { quizData } from "./questions";
 const Quiz_app = () => {
   const [quizState, setQuizState] = useState({
     quizIndex: 0,
-    remainingTime: 0,
+    remainingTime: 300,
   });
+
+  const handleProgessBar = useCallback(() => {
+    setQuizState((prevState) => ({
+      ...prevState,
+      remainingTime: prevState.remainingTime - 10,
+    }));
+  }, []);
 
   function handleNextQuiz() {
     setQuizState((prevState) => {
@@ -34,7 +41,11 @@ const Quiz_app = () => {
 
   return (
     <section>
-      <QuizProgressBar timer={300} />
+      <QuizProgressBar
+        onProgress={handleProgessBar}
+        timer={quizState.remainingTime}
+      />
+
       <Quizzs
         onNext={handleNextQuiz}
         index={quizState.quizIndex}

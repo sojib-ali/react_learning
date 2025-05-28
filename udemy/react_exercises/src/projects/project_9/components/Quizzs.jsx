@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { quizData } from "../questions";
 
 const Quizzs = ({ onNext, index, onPrev }) => {
