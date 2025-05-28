@@ -1,16 +1,18 @@
 import { useState } from "react";
 import { quizData } from "../questions";
 
-const Quizzs = () => {
-  const [index, setIndex] = useState(0);
+const Quizzs = ({ onNext, index }) => {
+  //   const [index, setIndex] = useState(0);
 
   let quiz = quizData[index];
+
   function handleNext() {
-    if (index < quizData.length - 1) {
-      setIndex(index + 1);
-    } else {
-      setIndex(0);
-    }
+    // if (index < quizData.length - 1) {
+    //   setIndex(index + 1);
+    // } else {
+    //   setIndex(0);
+    // }
+    onNext();
   }
 
   function handlePrev() {
