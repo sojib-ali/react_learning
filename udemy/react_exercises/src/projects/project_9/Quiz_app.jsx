@@ -4,7 +4,7 @@ import Quizzs from "./components/Quizzs";
 const Quiz_app = () => {
   return (
     <section>
-      <QuizProgressBar />
+      <QuizProgressBar timer={300} />
       <Quizzs />
     </section>
   );
