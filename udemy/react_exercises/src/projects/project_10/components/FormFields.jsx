@@ -4,11 +4,7 @@ const FormFields = ({
   onCategory,
   inputText,
   onSubmit,
-  error1,
 }) => {
-  //   if (inputText.description.trim() === "") {
-  //   }
-
   return (
     <>
       <form className="form-fields" onSubmit={onSubmit}>
@@ -19,7 +15,6 @@ const FormFields = ({
             onChange={onDescription}
             value={inputText.description}
           />
-          {error1 && <p>wtf bro</p>}
         </div>
 
         <div>
@@ -49,10 +44,6 @@ const FormFields = ({
           Submit
         </button>
       </form>
-
-      {inputText.description}
-      {inputText.amount}
-      {inputText.category}
     </>
   );
 };

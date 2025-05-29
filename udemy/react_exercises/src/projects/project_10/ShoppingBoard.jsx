@@ -5,14 +5,15 @@ import "./ShoppingBoard.css";
 
 const ShoppingBoard = () => {
   const [inputText, setInputText] = useState({
+    id: 0,
     description: "",
     amount: "",
-    category: "",
+    category: "grocery",
   });
 
   const [submittedItems, setSubmittedItems] = useState([]);
 
-  const [errorMessage, setErrorMessage] = useState(false);
+  // const [errorMessage, setErrorMessage] = useState(false);
 
   function handleDescription(e) {
     setInputText((prevInput) => ({
@@ -38,18 +39,37 @@ const ShoppingBoard = () => {
   function handleSubmit(e) {
     e.preventDefault();
 
-    setSubmittedItems((prevItems) => [...prevItems, inputText]);
+    const newInput = {
+      id: inputText.id,
+      description: inputText.description,
+      amount: inputText.amount,
+      category: inputText.category,
+    };
 
-    setInputText({ description: "", amount: "", category: "" });
+    setSubmittedItems((prevItems) => [...prevItems, newInput]);
 
-    if (
-      inputText.description.trim() === "" ||
-      inputText.amount.trim() === "" ||
-      inputText.category.trim() === ""
-    ) {
-      setErrorMessage(true);
-      return;
-    }
+    setInputText((prevInput) => ({
+      ...prevInput,
+      id: prevInput.id + 1,
+      description: "",
+      amount: "",
+      category: "grocery",
+    }));
+
+    // if (
+    //   inputText.description.trim() === "" ||
+    //   inputText.amount.trim() === "" ||
+    //   inputText.category.trim() === ""
+    // ) {
+    //   setErrorMessage(true);
+    //   return;
+    // }
+  }
+
+  function handleDelete(rid) {
+    setSubmittedItems((prevItems) =>
+      prevItems.filter((item) => item.id !== rid)
+    );
   }
 
   return (
@@ -61,9 +81,8 @@ const ShoppingBoard = () => {
           onCategory={handleCategory}
           onSubmit={handleSubmit}
           inputText={inputText}
-          error1={errorMessage}
         />
-        <FormTable listItems={submittedItems} />
+        <FormTable listItems={submittedItems} onDelete={handleDelete} />
       </section>
     </>
   );

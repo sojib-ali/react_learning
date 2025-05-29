@@ -1,14 +1,28 @@
-const FormTable = ({ listItems }) => {
+const FormTable = ({ onDelete, listItems }) => {
   return (
-    <ul>
-      {listItems.map((items, index) => (
-        <li key={index}>
-          {items.description}
-          {items.amount}
-          {items.category}
-        </li>
-      ))}
-    </ul>
+    <table>
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th>Amount</th>
+          <th>Category</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {listItems.map((items) => (
+          <tr key={items.id}>
+            <td> {items.description} </td>
+            <td> {items.amount} </td>
+            <td> {items.category} </td>
+            <td>
+              {" "}
+              <button onClick={() => onDelete(items.id)}>Delete</button>{" "}
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
 };
 
