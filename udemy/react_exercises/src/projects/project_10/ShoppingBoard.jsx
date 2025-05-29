@@ -12,8 +12,7 @@ const ShoppingBoard = () => {
   });
 
   const [submittedItems, setSubmittedItems] = useState([]);
-
-  // const [errorMessage, setErrorMessage] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("all categories");
 
   function handleDescription(e) {
     setInputText((prevInput) => ({
@@ -55,15 +54,6 @@ const ShoppingBoard = () => {
       amount: "",
       category: "grocery",
     }));
-
-    // if (
-    //   inputText.description.trim() === "" ||
-    //   inputText.amount.trim() === "" ||
-    //   inputText.category.trim() === ""
-    // ) {
-    //   setErrorMessage(true);
-    //   return;
-    // }
   }
 
   function handleDelete(rid) {
@@ -71,6 +61,15 @@ const ShoppingBoard = () => {
       prevItems.filter((item) => item.id !== rid)
     );
   }
+
+  function handleSelectCategory(e) {
+    setSelectedCategory(e.target.value);
+  }
+
+  const itemsToDisplay =
+    selectedCategory === "all categories" || selectedCategory === ""
+      ? submittedItems
+      : submittedItems.filter((item) => item.category === selectedCategory);
 
   return (
     <>
@@ -80,9 +79,11 @@ const ShoppingBoard = () => {
           onAmount={handleAmount}
           onCategory={handleCategory}
           onSubmit={handleSubmit}
+          onSelectCategorty={handleSelectCategory}
           inputText={inputText}
+          selectedCategory={selectedCategory}
         />
-        <FormTable listItems={submittedItems} onDelete={handleDelete} />
+        <FormTable listItems={itemsToDisplay} onDelete={handleDelete} />
       </section>
     </>
   );

@@ -16,8 +16,7 @@ const FormTable = ({ onDelete, listItems }) => {
             <td> {items.amount} </td>
             <td> {items.category} </td>
             <td>
-              {" "}
-              <button onClick={() => onDelete(items.id)}>Delete</button>{" "}
+              <button onClick={() => onDelete(items.id)}>Delete</button>
             </td>
           </tr>
         ))}

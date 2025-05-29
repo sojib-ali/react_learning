@@ -4,6 +4,8 @@ const FormFields = ({
   onCategory,
   inputText,
   onSubmit,
+  onSelectCategorty,
+  selectedCategory,
 }) => {
   return (
     <>
@@ -44,6 +46,17 @@ const FormFields = ({
           Submit
         </button>
       </form>
+      <select
+        onChange={onSelectCategorty}
+        value={selectedCategory}
+        name=""
+        id=""
+      >
+        <option value="all categories">All categories</option>
+        <option value="grocery">grocery</option>
+        <option value="utilities">utilities</option>
+        <option value="entertainment">Entertainment</option>
+      </select>
     </>
   );
 };
