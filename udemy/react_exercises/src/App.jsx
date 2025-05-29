@@ -12,6 +12,7 @@ import ProjectDashboard from "./projects/project_6/ProjectDashboard.jsx";
 import E_shop from "./projects/project_7/E_shop.jsx";
 import ImagePicker from "./projects/project_8/ImagePicker.jsx";
 import Quiz_app from "./projects/project_9/Quiz_app.jsx";
+import ShoppingBoard from "./projects/project_10/ShoppingBoard.jsx";
 import "./tailwind.css";
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path="/e-shop" element={<E_shop />} />
         <Route path="/image-picker" element={<ImagePicker />} />
         <Route path="/quiz-tester" element={<Quiz_app />} />
+        <Route path="/shopping-board" element={<ShoppingBoard />} />
       </Routes>
     </BrowserRouter>
   );
