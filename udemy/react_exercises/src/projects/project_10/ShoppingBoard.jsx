@@ -24,7 +24,7 @@ const ShoppingBoard = () => {
   function handleAmount(e) {
     setInputText((prevInput) => ({
       ...prevInput,
-      amount: e.target.value,
+      amount: Number(e.target.value),
     }));
   }
 
