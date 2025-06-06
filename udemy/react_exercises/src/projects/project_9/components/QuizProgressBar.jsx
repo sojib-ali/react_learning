@@ -1,22 +1,23 @@
 import { useEffect } from "react";
 
-const QuizProgressBar = ({ timer, onProgress }) => {
+const QuizProgressBar = ({ timer, onProgress, onNext, maxTime }) => {
   useEffect(() => {
-    if (timer < 10) {
+    if (timer <= 0) {
+      onNext();
       return;
     }
     const intervalId = setInterval(() => {
       onProgress();
-    }, 10);
+    }, 100);
 
     return () => {
       clearInterval(intervalId);
     };
-  }, [timer, onProgress]);
+  }, [timer, onProgress, onNext]);
 
   return (
     <>
-      <progress value={timer} max={300} />
+      <progress value={timer} max={maxTime} />
     </>
   );
 };

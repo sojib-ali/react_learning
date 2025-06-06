@@ -3,54 +3,65 @@ import QuizProgressBar from "./components/QuizProgressBar";
 import Quizzs from "./components/Quizzs";
 
 import { quizData } from "./questions";
+const QUESTION_TIME_MS = 10000;
+const PROGRESS_INTERVAL = 100;
 
 const Quiz_app = () => {
   const [quizState, setQuizState] = useState({
     quizIndex: 0,
-    remainingTime: 300,
+    remainingTime: QUESTION_TIME_MS,
+    quizCompleted: false,
   });
 
   const handleProgessBar = useCallback(() => {
-    setQuizState((prevState) => ({
-      ...prevState,
-      remainingTime: prevState.remainingTime - 10,
-    }));
-  }, []);
-
-  function handleNextQuiz() {
     setQuizState((prevState) => {
-      let nextIndex;
-      if (prevState.quizIndex < quizData.length - 1) {
-        nextIndex = prevState.quizIndex + 1;
-      } else {
-        nextIndex = 0;
+      if (prevState.quizCompleted || prevState.remainingTime <= 0) {
+        return prevState;
       }
       return {
         ...prevState,
-        quizIndex: nextIndex,
+        remainingTime: Math.max(0, prevState.remainingTime - PROGRESS_INTERVAL),
       };
     });
-  }
+  }, []);
 
-  function handlePrevQuiz() {
-    setQuizState((prevState) => ({
-      ...prevState,
-      quizIndex: prevState.quizIndex != 0 ? prevState.quizIndex - 1 : 0,
-    }));
-  }
+  const handleTimeUp = useCallback(() => {
+    setQuizState((prevState) => {
+      if (prevState.quizCompleted) {
+        return prevState;
+      }
+      if (prevState.quizIndex < quizData.length - 1) {
+        return {
+          ...prevState,
+          quizIndex: prevState.quizIndex + 1,
+          remainingTime: QUESTION_TIME_MS,
+        };
+      } else {
+        return {
+          ...prevState,
+          remainingTime: 0,
+          quizCompleted: true,
+        };
+      }
+    });
+  });
 
   return (
     <section>
       <QuizProgressBar
         onProgress={handleProgessBar}
         timer={quizState.remainingTime}
+        onNext={handleTimeUp}
+        maxTime={QUESTION_TIME_MS}
       />
 
-      <Quizzs
-        onNext={handleNextQuiz}
-        index={quizState.quizIndex}
-        onPrev={handlePrevQuiz}
-      />
+      {quizState.quizCompleted ? (
+        <div>
+          <h2>Quiz completed!</h2>
+        </div>
+      ) : (
+        <Quizzs index={quizState.quizIndex} />
+      )}
     </section>
   );
 };
