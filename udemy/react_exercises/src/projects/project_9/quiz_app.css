@@ -1,0 +1,8 @@
+.quiz-options:hover{
+    color: blue;
+}
+
+.option-selected{
+    color: green;
+    font-weight: bold;
+}

@@ -3,6 +3,8 @@ import QuizProgressBar from "./components/QuizProgressBar";
 import Quizzs from "./components/Quizzs";
 
 import { quizData } from "./questions";
+import "./quiz_app.css";
+
 const QUESTION_TIME_MS = 10000;
 const PROGRESS_INTERVAL = 100;
 
@@ -11,7 +13,15 @@ const Quiz_app = () => {
     quizIndex: 0,
     remainingTime: QUESTION_TIME_MS,
     quizCompleted: false,
+    optionSelected: null,
   });
+
+  const handleIsSelected = useCallback((index) => {
+    setQuizState((prevState) => ({
+      ...prevState,
+      optionSelected: index,
+    }));
+  }, []);
 
   const handleProgessBar = useCallback(() => {
     setQuizState((prevState) => {
@@ -34,6 +44,7 @@ const Quiz_app = () => {
         return {
           ...prevState,
           quizIndex: prevState.quizIndex + 1,
+          optionSelected: null,
           remainingTime: QUESTION_TIME_MS,
         };
       } else {
@@ -60,7 +71,11 @@ const Quiz_app = () => {
           <h2>Quiz completed!</h2>
         </div>
       ) : (
-        <Quizzs index={quizState.quizIndex} />
+        <Quizzs
+          index={quizState.quizIndex}
+          isSelected={handleIsSelected}
+          selectedKey={quizState.optionSelected}
+        />
       )}
     </section>
   );

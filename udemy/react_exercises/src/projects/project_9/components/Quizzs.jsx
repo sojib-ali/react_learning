@@ -1,11 +1,17 @@
 import { quizData } from "../questions";
 
-const Quizzs = ({ index }) => {
+const Quizzs = ({ index, isSelected, selectedKey }) => {
   let quiz = quizData[index];
   let options = (
     <ul>
       {Object.entries(quiz.options).map(([key, option]) => (
-        <li key={key}>{option}</li>
+        <li
+          className={selectedKey === key ? "option-selected" : "quiz-options"}
+          key={key}
+          onClick={() => isSelected(key)}
+        >
+          {option}
+        </li>
       ))}
     </ul>
   );
