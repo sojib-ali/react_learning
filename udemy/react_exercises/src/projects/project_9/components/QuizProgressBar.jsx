@@ -1,14 +1,21 @@
 import { useEffect } from "react";
 
-const QuizProgressBar = ({ timer, onProgress, onNext, maxTime }) => {
+const QuizProgressBar = ({
+  timer,
+  onProgress,
+  onNext,
+  maxTime,
+  selectedKey,
+}) => {
   useEffect(() => {
+    const speed = selectedKey !== null ? 10 : 100;
     if (timer <= 0) {
       onNext();
       return;
     }
     const intervalId = setInterval(() => {
       onProgress();
-    }, 100);
+    }, speed);
 
     return () => {
       clearInterval(intervalId);

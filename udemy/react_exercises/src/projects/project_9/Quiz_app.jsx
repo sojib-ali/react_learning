@@ -64,6 +64,7 @@ const Quiz_app = () => {
         timer={quizState.remainingTime}
         onNext={handleTimeUp}
         maxTime={QUESTION_TIME_MS}
+        selectedKey={quizState.optionSelected}
       />
 
       {quizState.quizCompleted ? (
