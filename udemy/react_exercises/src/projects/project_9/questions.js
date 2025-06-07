@@ -106,5 +106,5 @@ export const quizData = [{
       c: "Dollar",
       d: "Yen"
     },
-    answer: "not found"
+    answer: "d"
   }]

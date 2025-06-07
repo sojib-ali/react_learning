@@ -14,13 +14,38 @@ const Quiz_app = () => {
     remainingTime: QUESTION_TIME_MS,
     quizCompleted: false,
     optionSelected: null,
+    answer: null,
+    resultCounter: 0,
+    questionAnswered: false,
   });
 
-  const handleIsSelected = useCallback((index) => {
-    setQuizState((prevState) => ({
-      ...prevState,
-      optionSelected: index,
-    }));
+  const handleResult = useCallback(() => {
+    setQuizState((prevState) => {
+      if (prevState.questionAnswered) {
+        return prevState;
+      }
+      const isValidSelection =
+        prevState.optionSelected !== null && prevState.answer !== null;
+      const isCorrect =
+        isValidSelection && prevState.optionSelected === prevState.answer;
+      return {
+        ...prevState,
+        resultCounter: isCorrect
+          ? prevState.resultCounter + 1
+          : prevState.resultCounter,
+        questionAnswered: true,
+      };
+    });
+  }, []);
+
+  const handleIsSelected = useCallback((index, answer) => {
+    setQuizState((prevState) => {
+      return {
+        ...prevState,
+        optionSelected: index,
+        answer: answer,
+      };
+    });
   }, []);
 
   const handleProgessBar = useCallback(() => {
@@ -36,6 +61,7 @@ const Quiz_app = () => {
   }, []);
 
   const handleTimeUp = useCallback(() => {
+    handleResult();
     setQuizState((prevState) => {
       if (prevState.quizCompleted) {
         return prevState;
@@ -44,8 +70,10 @@ const Quiz_app = () => {
         return {
           ...prevState,
           quizIndex: prevState.quizIndex + 1,
-          optionSelected: null,
           remainingTime: QUESTION_TIME_MS,
+          optionSelected: null,
+          answer: null,
+          questionAnswered: false,
         };
       } else {
         return {
@@ -55,7 +83,7 @@ const Quiz_app = () => {
         };
       }
     });
-  });
+  }, [handleResult]);
 
   return (
     <section>
@@ -78,6 +106,8 @@ const Quiz_app = () => {
           selectedKey={quizState.optionSelected}
         />
       )}
+
+      <p>{quizState.resultCounter}</p>
     </section>
   );
 };

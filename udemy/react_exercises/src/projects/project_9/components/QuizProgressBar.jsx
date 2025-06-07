@@ -20,7 +20,7 @@ const QuizProgressBar = ({
     return () => {
       clearInterval(intervalId);
     };
-  }, [timer, onProgress, onNext]);
+  }, [timer, onProgress, onNext, selectedKey]);
 
   return (
     <>
