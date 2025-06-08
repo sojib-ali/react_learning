@@ -3,6 +3,22 @@
 }
 
 .option-selected{
+    color: rgb(163, 163, 22);
+    font-weight: bold;
+}
+
+.correct-answer{
     color: green;
     font-weight: bold;
+}
+.wrong-answer{
+    color:red;
+    font-weight:500;
+}
+
+.quiz-green{
+    color: rgb(16, 146, 16);
+}
+.quiz-red{
+    color: rgb(120, 12, 12)
 }

@@ -17,6 +17,8 @@ const Quiz_app = () => {
     answer: null,
     resultCounter: 0,
     questionAnswered: false,
+    question: [],
+    resultFlag: false,
   });
 
   const handleResult = useCallback(() => {
@@ -33,17 +35,19 @@ const Quiz_app = () => {
         resultCounter: isCorrect
           ? prevState.resultCounter + 1
           : prevState.resultCounter,
+        resultFlag: isCorrect ? true : prevState.resultFlag,
         questionAnswered: true,
       };
     });
   }, []);
 
-  const handleIsSelected = useCallback((index, answer) => {
+  const handleIsSelected = useCallback((index, answer, quizQuestion) => {
     setQuizState((prevState) => {
       return {
         ...prevState,
         optionSelected: index,
         answer: answer,
+        question: [...prevState.question, quizQuestion],
       };
     });
   }, []);
@@ -108,6 +112,17 @@ const Quiz_app = () => {
       )}
 
       <p>{quizState.resultCounter}</p>
+      {/* <ul>
+        {quizState.question.map((item, index) => (
+          <li
+            className={quizState.resultFlag ? "quiz-green" : "quiz-red"}
+            key={index}
+          >
+            {item}
+          </li>
+        ))}
+      </ul> */}
+      <div>{quizState.question}</div>
     </section>
   );
 };
