@@ -8,7 +8,7 @@ const Quizzs = ({ index, isSelected, selectedKey }) => {
         <li
           className={selectedKey === key ? "option-selected" : "quiz-options"}
           key={key}
-          onClick={() => isSelected(key, quiz.answer, quiz.question)}
+          onClick={() => isSelected(key, quiz.answer)}
         >
           {option}
         </li>

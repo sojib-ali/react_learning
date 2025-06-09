@@ -22,3 +22,7 @@
 .quiz-red{
     color: rgb(120, 12, 12)
 }
+
+.quiz-skipped{
+    color: purple;
+}

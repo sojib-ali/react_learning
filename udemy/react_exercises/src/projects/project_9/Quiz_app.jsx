@@ -16,38 +16,15 @@ const Quiz_app = () => {
     optionSelected: null,
     answer: null,
     resultCounter: 0,
-    questionAnswered: false,
-    question: [],
-    resultFlag: false,
+    answeredQuestion: [],
   });
 
-  const handleResult = useCallback(() => {
-    setQuizState((prevState) => {
-      if (prevState.questionAnswered) {
-        return prevState;
-      }
-      const isValidSelection =
-        prevState.optionSelected !== null && prevState.answer !== null;
-      const isCorrect =
-        isValidSelection && prevState.optionSelected === prevState.answer;
-      return {
-        ...prevState,
-        resultCounter: isCorrect
-          ? prevState.resultCounter + 1
-          : prevState.resultCounter,
-        resultFlag: isCorrect ? true : prevState.resultFlag,
-        questionAnswered: true,
-      };
-    });
-  }, []);
-
-  const handleIsSelected = useCallback((index, answer, quizQuestion) => {
+  const handleIsSelected = useCallback((selectedKey, correctAnswerKey) => {
     setQuizState((prevState) => {
       return {
         ...prevState,
-        optionSelected: index,
-        answer: answer,
-        question: [...prevState.question, quizQuestion],
+        optionSelected: selectedKey,
+        answer: correctAnswerKey,
       };
     });
   }, []);
@@ -65,11 +42,31 @@ const Quiz_app = () => {
   }, []);
 
   const handleTimeUp = useCallback(() => {
-    handleResult();
     setQuizState((prevState) => {
       if (prevState.quizCompleted) {
         return prevState;
       }
+      const currentQuestionData = quizData[prevState.quizIndex];
+      const questionText = currentQuestionData.question;
+
+      const isSkipped = prevState.optionSelected === null;
+      const isCorrect =
+        !isSkipped && prevState.optionSelected === prevState.answer;
+
+      const newAnsweredQuestion = {
+        text: questionText,
+        wasCorrect: isCorrect,
+        wasSkipped: isSkipped,
+      };
+      const updatedAnsweredQuestion = [
+        ...prevState.answeredQuestion,
+        newAnsweredQuestion,
+      ];
+      const updatedResultCounter =
+        isCorrect && !isSkipped
+          ? prevState.resultCounter + 1
+          : prevState.resultCounter;
+
       if (prevState.quizIndex < quizData.length - 1) {
         return {
           ...prevState,
@@ -77,17 +74,27 @@ const Quiz_app = () => {
           remainingTime: QUESTION_TIME_MS,
           optionSelected: null,
           answer: null,
-          questionAnswered: false,
+          resultCounter: updatedResultCounter,
+          answeredQuestion: updatedAnsweredQuestion,
         };
       } else {
         return {
           ...prevState,
           remainingTime: 0,
           quizCompleted: true,
+          resultCounter: updatedResultCounter,
+          answeredQuestion: updatedAnsweredQuestion,
+          optionSelected: null,
+          answer: null,
         };
       }
     });
-  }, [handleResult]);
+  }, []);
+
+  const getClassName = () => {
+    if (answeredQuestion.isSkipped) return "quiz-skipped";
+    return answeredQuestion.wasCorrect ? "quiz-green" : "quiz-red";
+  };
 
   return (
     <section>
@@ -102,6 +109,9 @@ const Quiz_app = () => {
       {quizState.quizCompleted ? (
         <div>
           <h2>Quiz completed!</h2>
+          <p>
+            Your Score: {quizState.resultCounter} / {quizData.length}{" "}
+          </p>
         </div>
       ) : (
         <Quizzs
@@ -111,18 +121,34 @@ const Quiz_app = () => {
         />
       )}
 
-      <p>{quizState.resultCounter}</p>
-      {/* <ul>
-        {quizState.question.map((item, index) => (
-          <li
-            className={quizState.resultFlag ? "quiz-green" : "quiz-red"}
-            key={index}
-          >
-            {item}
-          </li>
-        ))}
-      </ul> */}
-      <div>{quizState.question}</div>
+      <div>
+        {quizState.quizCompleted && (
+          <>
+            <h3>Summary:</h3>
+            <ul>
+              {quizState.answeredQuestion.map((answeredQ, index) => (
+                <li
+                  key={index}
+                  className={
+                    answeredQ.wasSkipped
+                      ? "quiz-skipped"
+                      : answeredQ.wasCorrect
+                      ? "quiz-green"
+                      : "quiz-red"
+                  }
+                >
+                  {answeredQ.text} -{" "}
+                  {answeredQ.wasSkipped
+                    ? "skipped"
+                    : answeredQ.wasCorrect
+                    ? "correct"
+                    : "incorrect"}
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+      </div>
     </section>
   );
 };
