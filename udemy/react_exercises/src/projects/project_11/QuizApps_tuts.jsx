@@ -1,11 +1,15 @@
 import Header from "./components/Header";
 import "./quizApps_tuts.css";
+import Quiz from "./components/Quiz";
 
 const QuizApps_tuts = () => {
   return (
-    <div>
+    <>
       <Header />
-    </div>
+      <main>
+        <Quiz />
+      </main>
+    </>
   );
 };
 
