@@ -14,6 +14,7 @@ import ImagePicker from "./projects/project_8/ImagePicker.jsx";
 import Quiz_app from "./projects/project_9/Quiz_app.jsx";
 import ShoppingBoard from "./projects/project_10/ShoppingBoard.jsx";
 import QuizApps_tuts from "./projects/project_11/QuizApps_tuts.jsx";
+import PickPlace from "./projects/project_12/PickPlace.jsx";
 import "./tailwind.css";
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path="/quiz-tester" element={<Quiz_app />} />
         <Route path="/shopping-board" element={<ShoppingBoard />} />
         <Route path="/quiz-app" element={<QuizApps_tuts />} />
+        <Route path="/pick-place" element={<PickPlace />} />
       </Routes>
     </BrowserRouter>
   );
