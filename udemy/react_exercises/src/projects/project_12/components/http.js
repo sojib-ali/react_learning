@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:3000"; // Change this as needed (e.g., to 127.0.0.1 or production URL)
+const BASE_URL = "http://localhost:3000"; 
 
 export async function fetchAvailablePlaces() {
     const response = await fetch(`${BASE_URL}/places`);
