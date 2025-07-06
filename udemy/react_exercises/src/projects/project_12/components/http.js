@@ -13,6 +13,19 @@ export async function fetchAvailablePlaces() {
     return resData.places;
 }
 
+export async function fetchUserPlaces() {
+    const response = await fetch(`${BASE_URL}/user-places`);
+
+    if (!response.ok) {
+        const text = await response.text(); // Optional debug
+        console.error("Error response:", text);
+        throw new Error("Failed to fetch user places");
+    }
+
+    const resData = await response.json();
+    return resData.places;
+}
+
 export async function updateUserPlaces(places) {
     const response = await fetch(`${BASE_URL}/user-places`, {
         method: 'PUT',
