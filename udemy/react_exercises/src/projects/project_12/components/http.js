@@ -1,26 +1,33 @@
-export async function fetchAvailablePlaces() {
-    const response = await fetch("http://localhost:3000/places");
-        const resData = await response.json(); 
+const BASE_URL = "http://localhost:3000"; // Change this as needed (e.g., to 127.0.0.1 or production URL)
 
-        if (!response.ok) {
-            throw new Error("Failed to fetch places");
-        }
-        return resData.places;
+export async function fetchAvailablePlaces() {
+    const response = await fetch(`${BASE_URL}/places`);
+
+    if (!response.ok) {
+        const text = await response.text(); // Optional debug
+        console.error("Error response:", text);
+        throw new Error("Failed to fetch places");
+    }
+
+    const resData = await response.json();
+    return resData.places;
 }
 
-export async function updateUserPlaces(places){
-  const response = await fetch("http://localhost:3000/user-places",{
+export async function updateUserPlaces(places) {
+    const response = await fetch(`${BASE_URL}/user-places`, {
         method: 'PUT',
-        body: JSON.stringify({places}),
+        body: JSON.stringify({ places }),
         headers: {
             'Content-Type': 'application/json'
         }
-    })
+    });
 
-    const resData = await response.json();
-    if(!response.ok){
-        throw new error('Failed to update user data');
+    if (!response.ok) {
+        const text = await response.text(); // Optional debug
+        console.error("Error updating places:", text);
+        throw new Error("Failed to update user data");
     }
 
+    const resData = await response.json();
     return resData.message;
 }
