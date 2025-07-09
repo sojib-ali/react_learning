@@ -29,6 +29,7 @@ const Home = () => {
       <Link to="/shopping-board">practice project - Shopping dashboard</Link>
       <Link to="/quiz-app">practice project - quiz app tutorial version</Link>
       <Link to="/pick-place">database connectoin project - pick place</Link>
+      <Link to="/form-demo">form handlings</Link>
     </div>
   );
 };

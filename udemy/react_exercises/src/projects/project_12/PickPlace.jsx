@@ -15,7 +15,7 @@ function PickPlace() {
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [ErrorUpdateingPlaces, setErrorUpdatingPlaces] = useState();
-
+  
   const {
     isFetching,
     error,
