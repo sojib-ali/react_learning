@@ -17,10 +17,30 @@ export default function Login() {
     event.preventDefault();
     console.log(enteredValue);
 
+    if (!didEdit.email) {
+      setDidEdit((prevEdit) => ({
+        ...prevEdit,
+        email: true,
+      }));
+    }
+
+    const emailIsInvalidNow = !enteredValue.email.includes("@");
+
+    if (emailIsInvalidNow) {
+      return;
+    }
+
     setEnteredValue({
       email: "",
       password: "",
     });
+
+    setDidEdit({
+      email: false,
+      password: false,
+    });
+
+    console.log("http sending request ..");
   }
 
   function handleValues(identifiers, values) {
