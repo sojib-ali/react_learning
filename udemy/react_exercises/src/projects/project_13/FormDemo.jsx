@@ -1,5 +1,5 @@
 import Header from "./components/Header.jsx";
-import Login from "./components/Login.jsx";
+import Signup from "./components/Signup.jsx";
 import "./formDemo.css";
 
 const FormDemo = () => {
@@ -7,7 +7,7 @@ const FormDemo = () => {
     <div>
       <Header />
       <main>
-        <Login />
+        <Signup />
       </main>
     </div>
   );
