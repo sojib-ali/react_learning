@@ -30,6 +30,7 @@ const Home = () => {
       <Link to="/quiz-app">practice project - quiz app tutorial version</Link>
       <Link to="/pick-place">database connectoin project - pick place</Link>
       <Link to="/form-demo">form handlings</Link>
+      <Link to="/form-action">form action demo</Link>
     </div>
   );
 };

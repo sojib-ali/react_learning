@@ -16,6 +16,7 @@ import ShoppingBoard from "./projects/project_10/ShoppingBoard.jsx";
 import QuizApps_tuts from "./projects/project_11/QuizApps_tuts.jsx";
 import PickPlace from "./projects/project_12/PickPlace.jsx";
 import FormDemo from "./projects/project_13/FormDemo.jsx";
+import FrmAction from "./projects/project_14/FrmAction.jsx";
 import "./tailwind.css";
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
         <Route path="/quiz-app" element={<QuizApps_tuts />} />
         <Route path="/pick-place" element={<PickPlace />} />
         <Route path="/form-demo" element={<FormDemo />} />
+        <Route path="/form-action" element={<FrmAction />} />
       </Routes>
     </BrowserRouter>
   );
