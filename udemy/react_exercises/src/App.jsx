@@ -17,6 +17,7 @@ import QuizApps_tuts from "./projects/project_11/QuizApps_tuts.jsx";
 import PickPlace from "./projects/project_12/PickPlace.jsx";
 import FormDemo from "./projects/project_13/FormDemo.jsx";
 import FrmAction from "./projects/project_14/FrmAction.jsx";
+import OpinionBoard from "./projects/project_15/OpinionBoard.jsx";
 import "./tailwind.css";
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
         <Route path="/pick-place" element={<PickPlace />} />
         <Route path="/form-demo" element={<FormDemo />} />
         <Route path="/form-action" element={<FrmAction />} />
+        <Route path="/opinion-board" element={<OpinionBoard />} />
       </Routes>
     </BrowserRouter>
   );
