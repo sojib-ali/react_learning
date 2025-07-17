@@ -1,6 +1,10 @@
 const Header = ({ onShowCart, cartItems }) => {
   function handleCart() {
-    onShowCart(true);
+    onShowCart((prev) => ({
+      ...prev,
+      showCart: true,
+      showCheckOut: false,
+    }));
   }
 
   const totalCartItems = cartItems.reduce((total, item) => {

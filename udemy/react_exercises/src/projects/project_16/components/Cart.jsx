@@ -1,4 +1,4 @@
-const Cart = ({ cartItems }) => {
+const Cart = ({ cartItems, onCheckOut }) => {
   const totalPrice = cartItems.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
@@ -19,8 +19,21 @@ const Cart = ({ cartItems }) => {
               </li>
             ))}
           </ul>
-
-          <p>${totalPrice.toFixed(2)}</p>
+          <div className="cart-fn">
+            <p>${totalPrice.toFixed(2)}</p>
+            <button
+              onClick={() =>
+                onCheckOut((prev) => ({
+                  ...prev,
+                  showCart: false,
+                  showCheckOut: true,
+                }))
+              }
+              className="cart-fn-btn"
+            >
+              checkout
+            </button>
+          </div>
         </>
       )}
     </div>

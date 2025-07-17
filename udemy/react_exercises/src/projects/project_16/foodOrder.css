@@ -88,3 +88,92 @@
   outline: none;
 }
 
+.cart-fn{
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart-fn-btn{
+  background: linear-gradient(90deg, #f9d423 0%, #ffc107 100%);
+  border: none;
+  border-radius: 50px; /* A modern, pill-shaped button */
+  color: #333;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 12px 24px;
+  margin: 0.5rem 1.5rem 1.5rem 1.5rem; /* Top, Right, Bottom, Left margin */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.form-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.form-input {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.form-input:focus {
+  border-color: #007bff;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.btn {
+  padding: 0.5rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-secondary {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.btn-secondary:hover {
+  background-color: #c0c0c0;
+}
+

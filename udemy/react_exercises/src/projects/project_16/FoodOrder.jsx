@@ -3,18 +3,27 @@ import FoodItems from "./components/FoodItems";
 import Header from "./components/Header";
 import Cart from "./components/Cart";
 import Modal from "./components/Modal";
+import CheckoutForm from "./components/CheckoutForm";
 
 const FoodOrder = () => {
-  const [showCart, setShowCart] = useState(false);
+  const [showModal, setShowModal] = useState({
+    showCart: false,
+    showCheckOut: false,
+  });
   const [cartItems, setCartItems] = useState([]);
   return (
     <>
-      {showCart && (
-        <Modal shouldShow={showCart} setShouldShow={setShowCart}>
-          <Cart cartItems={cartItems} />
+      {showModal.showCart && (
+        <Modal shouldShow={showModal.showCart} setShouldShow={setShowModal}>
+          <Cart cartItems={cartItems} onCheckOut={setShowModal} />
         </Modal>
       )}
-      <Header onShowCart={setShowCart} cartItems={cartItems} />
+      {showModal.showCheckOut && (
+        <Modal shouldShow={showModal.showCheckOut} setShouldShow={setShowModal}>
+          <CheckoutForm onCheckOut={setShowModal} />
+        </Modal>
+      )}
+      <Header onShowCart={setShowModal} cartItems={cartItems} />
       <FoodItems cartItems={cartItems} onCartItems={setCartItems} />
     </>
   );
