@@ -52,7 +52,7 @@ const FoodItems = ({ cartItems, onCartItems }) => {
               <img className="food-img" src={food.image} alt={food.name} />
               <h3> {food.name} </h3>
               <p> {food.description} </p>
-              <p> {food.price} </p>
+              <p> ${food.price} </p>
               <button onClick={() => handleAddCart(food)} className="food-btn">
                 add to cart
               </button>
