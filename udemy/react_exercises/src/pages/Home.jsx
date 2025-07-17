@@ -34,6 +34,7 @@ const Home = () => {
       <Link to="/opinion-board">
         Handling form submission - opinion board demo project
       </Link>
+      <Link to="/food-order">food order demo project</Link>
     </div>
   );
 };
