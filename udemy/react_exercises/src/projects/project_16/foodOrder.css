@@ -1,3 +1,53 @@
+.header-items{
+  display: flex;
+  justify-content: space-between;
+  margin-inline: 1rem;
+}
+
+.header-btn{
+  background-color: #ff6b6b;
+  color: white;
+  border: none;
+  padding: 0.1rem 1rem;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  line-height: 1;
+}
+
+.header-btn:hover{
+  background-color: #ff4b4b;
+  transform: translateY(-2px);
+}
+
+.modal-background{
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(209, 213, 219, 0.75); /* bg-gray-300 with 75% opacity */
+}
+.modal-body{
+  background-color: white;
+  margin-left: auto;
+  margin-right: auto;  
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem; 
+  padding-left: 1.25rem;
+  padding-right: 1.25rem; 
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem; 
+  width: 50%;
+  color: #000;
+}
+
+
 .food-list{
     display: flex;
     gap: 1rem;
@@ -7,8 +57,6 @@
     list-style: none;
     width: 300px;
     text-align: center;
-    
-
 }
 
 .food-img{
@@ -39,3 +87,4 @@
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
   outline: none;
 }
+
