@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "../foodOrder.css";
 
-const FoodItems = () => {
+const FoodItems = ({ cartItems, onCartItems }) => {
   const [foodList, setFoodLists] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -24,6 +24,22 @@ const FoodItems = () => {
     loadFoodList();
   }, []);
 
+  function handleAddCart(food) {
+    onCartItems((prevCartItems) => {
+      const existingCartItem = prevCartItems.find(
+        (item) => item.id === food.id
+      );
+
+      if (existingCartItem) {
+        return prevCartItems.map((item) =>
+          item.id === food.id ? { ...item, quantity: item.quantity + 1 } : item
+        );
+      }
+
+      return [...prevCartItems, { ...food, quantity: 1 }];
+    });
+  }
+
   return (
     <>
       {loading && <p>Loading food items...</p>}
@@ -36,7 +52,10 @@ const FoodItems = () => {
               <img className="food-img" src={food.image} alt={food.name} />
               <h3> {food.name} </h3>
               <p> {food.description} </p>
-              <button className="food-btn">add to cart</button>
+              <p> {food.price} </p>
+              <button onClick={() => handleAddCart(food)} className="food-btn">
+                add to cart
+              </button>
             </li>
           ))}
         </ul>

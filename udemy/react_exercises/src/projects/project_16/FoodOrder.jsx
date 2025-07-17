@@ -6,15 +6,16 @@ import Modal from "./components/Modal";
 
 const FoodOrder = () => {
   const [showCart, setShowCart] = useState(false);
+  const [cartItems, setCartItems] = useState([]);
   return (
     <>
       {showCart && (
         <Modal shouldShow={showCart} setShouldShow={setShowCart}>
-          <Cart />
+          <Cart cartItems={cartItems} />
         </Modal>
       )}
-      <Header onShowCart={setShowCart} />
-      <FoodItems />
+      <Header onShowCart={setShowCart} cartItems={cartItems} />
+      <FoodItems cartItems={cartItems} onCartItems={setCartItems} />
     </>
   );
 };
