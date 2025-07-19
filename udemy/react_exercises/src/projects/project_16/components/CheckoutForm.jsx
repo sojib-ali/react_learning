@@ -3,7 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { authSchema } from "../schemas/authSchema";
 import "./../foodOrder.css";
 
-const CheckoutForm = () => {
+const CheckoutForm = ({ onCheckOut }) => {
   const {
     register,
     handleSubmit,
@@ -48,7 +48,17 @@ const CheckoutForm = () => {
         </div>
 
         <div className="form-actions">
-          <button type="button" className="btn btn-secondary">
+          <button
+            onClick={() =>
+              onCheckOut((prev) => ({
+                ...prev,
+                showCart: true,
+                showCheckOut: false,
+              }))
+            }
+            type="button"
+            className="btn btn-secondary"
+          >
             Close
           </button>
           <button type="submit" className="btn btn-primary">

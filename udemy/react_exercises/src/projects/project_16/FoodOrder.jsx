@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FoodItems from "./components/FoodItems";
 import Header from "./components/Header";
 import Cart from "./components/Cart";
@@ -10,7 +10,20 @@ const FoodOrder = () => {
     showCart: false,
     showCheckOut: false,
   });
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState(() => {
+    try {
+      const storedCartItems = localStorage.getItem("cart");
+      return storedCartItems ? JSON.parse(storedCartItems) : [];
+    } catch (error) {
+      console.error("could not parse any data", error);
+      return [];
+    }
+  });
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cartItems));
+  }, [cartItems]);
+
   return (
     <>
       {showModal.showCart && (
