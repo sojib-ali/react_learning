@@ -33,7 +33,11 @@ const FoodOrder = () => {
       )}
       {showModal.showCheckOut && (
         <Modal shouldShow={showModal.showCheckOut} setShouldShow={setShowModal}>
-          <CheckoutForm onCheckOut={setShowModal} />
+          <CheckoutForm
+            cartItems={cartItems}
+            onCartItems={setCartItems}
+            onCheckOut={setShowModal}
+          />
         </Modal>
       )}
       <Header onShowCart={setShowModal} cartItems={cartItems} />

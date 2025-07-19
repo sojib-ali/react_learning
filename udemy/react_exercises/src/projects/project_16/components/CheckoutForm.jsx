@@ -3,7 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { authSchema } from "../schemas/authSchema";
 import "./../foodOrder.css";
 
-const CheckoutForm = ({ onCheckOut }) => {
+const CheckoutForm = ({ onCheckOut, cartItems, onCartItems }) => {
   const {
     register,
     handleSubmit,
@@ -11,15 +11,45 @@ const CheckoutForm = ({ onCheckOut }) => {
     reset,
   } = useForm({ resolver: zodResolver(authSchema) });
 
-  const onSubmit = (data) => {
+  const totalAmount = cartItems.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
+
+  const onSubmit = async (data) => {
     console.log("success", data);
-    reset();
+    const order = {
+      items: cartItems,
+      customer: data,
+    };
+
+    try {
+      const response = await fetch("http://127.0.0.1:8000/orders", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(order),
+      });
+      if (!response.ok) {
+        throw new Error("Order submission failed");
+      }
+      onCartItems([]);
+      reset();
+      onCheckOut((prev) => ({ ...prev, showCheckOut: false }));
+      alert("successfully data stored");
+    } catch (error) {
+      console.error("Submission Error:", error);
+      alert(
+        "Failed to submit order. Please check your connection and try again."
+      );
+    }
   };
 
   return (
     <>
       <h3>Checkout</h3>
-      <p>Total Amount</p>
+      <p>Total Amount : ${totalAmount.toFixed(2)}</p>
 
       <form className="form-container" onSubmit={handleSubmit(onSubmit)}>
         <div className="form-group">
