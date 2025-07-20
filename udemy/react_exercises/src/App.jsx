@@ -19,6 +19,7 @@ import FormDemo from "./projects/project_13/FormDemo.jsx";
 import FrmAction from "./projects/project_14/FrmAction.jsx";
 import OpinionBoard from "./projects/project_15/OpinionBoard.jsx";
 import FoodOrder from "./projects/project_16/FoodOrder.jsx";
+import FoodieTuts from "./projects/project_17/FoodieTuts.jsx";
 import "./tailwind.css";
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
         <Route path="/form-action" element={<FrmAction />} />
         <Route path="/opinion-board" element={<OpinionBoard />} />
         <Route path="/food-order" element={<FoodOrder />} />
+        <Route path="/order-food-tuts" element={<FoodieTuts />} />
       </Routes>
     </BrowserRouter>
   );
