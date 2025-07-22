@@ -1,13 +1,14 @@
 import Header from "./components/Header";
 import Meals from "./components/Meals";
+import { CartContextProvider } from "./store/CartContext";
 import "./foodieTuts.css";
 
 const FoodieTuts = () => {
   return (
-    <div>
+    <CartContextProvider>
       <Header />
       <Meals />
-    </div>
+    </CartContextProvider>
   );
 };
 
