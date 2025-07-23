@@ -4,6 +4,7 @@ import CartContext from "../store/CartContext";
 import { currencyFormatter } from "../util/formatting";
 import Button from "./UI/Button";
 import UserProgressContext from "../store/UserProgressContext";
+import CartItem from "./CartItem";
 
 const Cart = () => {
   const cartCtx = useContext(CartContext);
@@ -14,17 +15,26 @@ const Cart = () => {
     0
   );
 
+  function handleCloseCart() {
+    userProgressCtx.hideCart();
+  }
+
   return (
     <Modal className="cart" open={userProgressCtx.progress === "cart"}>
       <h2>Your Cart</h2>
       {cartCtx.items.map((item) => (
-        <li key={item.id}>
-          {item.name} - {item.quantity}
-        </li>
+        <CartItem
+          key={item.id}
+          name={item.name}
+          quantity={item.quantity}
+          price={item.price}
+        />
       ))}
       <p className="cart-total">{currencyFormatter.format(cartTotal)}</p>
       <p className="modal-actions">
-        <Button textOnly>Close</Button>
+        <Button textOnly onClick={handleCloseCart}>
+          Close
+        </Button>
         <Button>Got to Checkout</Button>
       </p>
     </Modal>
