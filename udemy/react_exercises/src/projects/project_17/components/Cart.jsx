@@ -28,6 +28,8 @@ const Cart = () => {
           name={item.name}
           quantity={item.quantity}
           price={item.price}
+          onIncrease={() => cartCtx.addItem(item)}
+          onDecrease={() => cartCtx.removeItem(item.id)}
         />
       ))}
       <p className="cart-total">{currencyFormatter.format(cartTotal)}</p>
@@ -35,7 +37,7 @@ const Cart = () => {
         <Button textOnly onClick={handleCloseCart}>
           Close
         </Button>
-        <Button>Got to Checkout</Button>
+        {cartCtx.items.length > 0 && <Button>Got to Checkout</Button>}
       </p>
     </Modal>
   );
