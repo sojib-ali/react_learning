@@ -4,6 +4,7 @@ import { CartContextProvider } from "./store/CartContext";
 import "./foodieTuts.css";
 import { UserProgressContextProvider } from "./store/UserProgressContext";
 import Cart from "./components/Cart";
+import Checkout from "./components/Checkout";
 
 const FoodieTuts = () => {
   return (
@@ -12,6 +13,7 @@ const FoodieTuts = () => {
         <Header />
         <Meals />
         <Cart />
+        <Checkout />
       </CartContextProvider>
     </UserProgressContextProvider>
   );
