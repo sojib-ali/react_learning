@@ -1,6 +1,7 @@
 import MealItem from "./MealItem";
 import "./../foodieTuts.css";
 import useHttp from "../hooks/useHttps";
+import Error from "./Error";
 
 const requestConfig = {};
 
@@ -14,7 +15,11 @@ const Meals = () => {
   console.log(loadedMeals);
 
   if (isLoading) {
-    return <p>Fetching meals..</p>;
+    return <p className="center">Fetching meals..</p>;
+  }
+
+  if (error) {
+    return <Error title="Failed to fetch meals" message={error} />;
   }
 
   return (
