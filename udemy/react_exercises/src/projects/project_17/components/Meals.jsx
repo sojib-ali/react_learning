@@ -9,7 +9,7 @@ const Meals = () => {
     data: loadedMeals,
     isLoading,
     error,
-  } = useHttp("http://localhost:3000/meals", requestConfig, []);
+  } = useHttp("http://192.168.221.221:3000/meals", requestConfig, []);
 
   console.log(loadedMeals);
 
