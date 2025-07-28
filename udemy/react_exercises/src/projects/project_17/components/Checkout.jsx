@@ -5,10 +5,25 @@ import Modal from "./UI/Modal";
 import UserProgressContext from "../store/UserProgressContext";
 import CartContext from "../store/CartContext";
 import Button from "./UI/Button";
+import useHttp from "../hooks/useHttps";
+
+const requestConfig = {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+};
 
 const Checkout = () => {
   const cartCtx = useContext(CartContext);
   const userProgressCtx = useContext(UserProgressContext);
+
+  const {
+    data,
+    isLoading: isSending,
+    error,
+    sendRequest,
+  } = useHttp("http://192.168.221.221:3000/meals", requestConfig);
 
   const cartTotal = cartCtx.items.reduce(
     (totalPrice, item) => totalPrice + item.quantity * item.price,
@@ -25,18 +40,27 @@ const Checkout = () => {
     const fd = new FormData(event.target);
     const customerData = Object.fromEntries(fd.entries());
 
-    fetch("http://localhost:3000/orders", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
+    sendRequest(
+      JSON.stringify({
         order: {
           items: cartCtx.items,
           customer: customerData,
         },
-      }),
-    });
+      })
+    );
+
+    // fetch("http://localhost:3000/orders", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     order: {
+    //       items: cartCtx.items,
+    //       customer: customerData,
+    //     },
+    //   }),
+    // });
   }
 
   return (
