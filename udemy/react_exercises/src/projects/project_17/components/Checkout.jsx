@@ -6,6 +6,7 @@ import UserProgressContext from "../store/UserProgressContext";
 import CartContext from "../store/CartContext";
 import Button from "./UI/Button";
 import useHttp from "../hooks/useHttps";
+import Error from "./Error";
 
 const requestConfig = {
   method: "POST",
@@ -23,7 +24,8 @@ const Checkout = () => {
     isLoading: isSending,
     error,
     sendRequest,
-  } = useHttp("http://192.168.221.221:3000/meals", requestConfig);
+    clearData,
+  } = useHttp("http://192.168.221.221:3000/orders", requestConfig);
 
   const cartTotal = cartCtx.items.reduce(
     (totalPrice, item) => totalPrice + item.quantity * item.price,
@@ -32,6 +34,12 @@ const Checkout = () => {
 
   function handleClose() {
     userProgressCtx.hideCheckout();
+  }
+
+  function handleFinish() {
+    userProgressCtx.hideCheckout();
+    cartCtx.clearCart();
+    clearData();
   }
 
   function handleSubmit(event) {
@@ -48,19 +56,38 @@ const Checkout = () => {
         },
       })
     );
+  }
 
-    // fetch("http://localhost:3000/orders", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     order: {
-    //       items: cartCtx.items,
-    //       customer: customerData,
-    //     },
-    //   }),
-    // });
+  let actions = (
+    <>
+      <Button type="button" textOnly onClick={handleClose}>
+        Close
+      </Button>
+      <Button>Submit Order</Button>
+    </>
+  );
+
+  if (isSending) {
+    actions = <span> Sending order data... </span>;
+  }
+
+  if (data && !error) {
+    return (
+      <Modal
+        open={userProgressCtx.progress === "checkout"}
+        onClose={handleFinish}
+      >
+        <h2>Success!</h2>
+        <p>Your order was subitted successfully</p>
+        <p>
+          We will get back to you with more details via email withing the next
+          few minutes
+        </p>
+        <p className="modal-actions">
+          <Button onClick={handleFinish}>Okay</Button>
+        </p>
+      </Modal>
+    );
   }
 
   return (
@@ -77,12 +104,9 @@ const Checkout = () => {
           <Input label="City" type="text" id="city" />
         </div>
 
-        <p className="modal-actions">
-          <Button type="button" textOnly onClick={handleClose}>
-            Close
-          </Button>
-          <Button>Submit Order</Button>
-        </p>
+        {error && <Error title="Failed to submit order" message={error} />}
+
+        <p className="modal-actions"> {actions} </p>
       </form>
     </Modal>
   );
