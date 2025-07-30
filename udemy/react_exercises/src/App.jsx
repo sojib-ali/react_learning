@@ -20,6 +20,9 @@ import FrmAction from "./projects/project_14/FrmAction.jsx";
 import OpinionBoard from "./projects/project_15/OpinionBoard.jsx";
 import FoodOrder from "./projects/project_16/FoodOrder.jsx";
 import FoodieTuts from "./projects/project_17/FoodieTuts.jsx";
+import Test_redux from "./projects/project_18/Test_redux.jsx";
+import store from "./projects/project_18/store/index.jsx";
+import { Provider } from "react-redux";
 import "./tailwind.css";
 function App() {
   return (
@@ -46,6 +49,15 @@ function App() {
         <Route path="/opinion-board" element={<OpinionBoard />} />
         <Route path="/food-order" element={<FoodOrder />} />
         <Route path="/order-food-tuts" element={<FoodieTuts />} />
+
+        <Route
+          path="/redux-project"
+          element={
+            <Provider store={store}>
+              <Test_redux />
+            </Provider>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

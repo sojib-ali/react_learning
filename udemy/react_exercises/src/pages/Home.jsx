@@ -38,6 +38,7 @@ const Home = () => {
       <Link to="/order-food-tuts">
         tutorial version - food order demo project
       </Link>
+      <Link to="/redux-project">redux demo project</Link>
     </div>
   );
 };
