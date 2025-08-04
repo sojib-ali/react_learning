@@ -39,6 +39,7 @@ const Home = () => {
         tutorial version - food order demo project
       </Link>
       <Link to="/redux-project">redux demo project</Link>
+      <Link to="/redux-sideEffect">Redux to handle HTTP request</Link>
     </div>
   );
 };

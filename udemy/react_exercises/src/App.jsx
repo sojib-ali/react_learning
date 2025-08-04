@@ -23,6 +23,7 @@ import FoodieTuts from "./projects/project_17/FoodieTuts.jsx";
 import Test_redux from "./projects/project_18/Test_redux.jsx";
 import store from "./projects/project_18/store/index.jsx";
 import { Provider } from "react-redux";
+import SideRedux from "./projects/project_19/SideRedux.jsx";
 import "./tailwind.css";
 function App() {
   return (
@@ -58,6 +59,7 @@ function App() {
             </Provider>
           }
         />
+        <Route path="redux-sideEffect" element={<SideRedux />} />
       </Routes>
     </BrowserRouter>
   );
