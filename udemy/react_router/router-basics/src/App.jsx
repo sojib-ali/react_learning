@@ -2,7 +2,6 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 import Homepage from "./pages/Homepage";
 import ProductsPage from "./pages/ProductsPage";
 
-import { Children } from "react";
 import RootLayout from "./pages/RootLayout";
 import ErrorPage from "./pages/ErrorPage";
 
@@ -16,11 +15,10 @@ const router = createBrowserRouter([
     ]
 
   }
-  
-
 ]);
 
-const App = () => {
+const App = () => { 
+
   return <RouterProvider router={router} />;
 };
 
