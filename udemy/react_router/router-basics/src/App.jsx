@@ -4,9 +4,11 @@ import ProductsPage from "./pages/ProductsPage";
 
 import { Children } from "react";
 import RootLayout from "./pages/RootLayout";
+import ErrorPage from "./pages/ErrorPage";
 
 const router = createBrowserRouter([
   {path: "/", element: <RootLayout />,
+    errorElement: <ErrorPage />,
 
     children: [ 
       { path: "/", element: <Homepage /> },
