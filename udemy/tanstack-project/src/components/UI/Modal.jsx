@@ -5,20 +5,26 @@ export default function Modal({ children, onClose }) {
   const dialog = useRef();
 
   useEffect(() => {
-    // Using useEffect to sync the Modal component with the DOM Dialog API
-    // This code will open the native <dialog> via it's built-in API whenever the <Modal> component is rendered
     const modal = dialog.current;
     modal.showModal();
 
-    return () => {
-      modal.close(); // needed to avoid error being thrown
+    const handleCancel = (e) => {
+      e.preventDefault(); // stops dialog from auto-closing
+      onClose();
     };
-  }, []);
+
+    modal.addEventListener("cancel", handleCancel);
+
+    return () => {
+      modal.removeEventListener("cancel", handleCancel);
+      modal.close();
+    };
+  }, [onClose]);
 
   return createPortal(
-    <dialog className="modal" ref={dialog} onClose={onClose}>
+    <dialog className="modal" ref={dialog}>
       {children}
     </dialog>,
-    document.getElementById('modal')
+    document.getElementById("modal")
   );
 }
