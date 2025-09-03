@@ -9,8 +9,8 @@ import { fetchEvents } from '../../utill/http.js';
 export default function NewEventsSection() {
 
   const{data, isPending, isError, error} = useQuery({
-    queryKey: ['events'],
-    queryFn: fetchEvents,
+    queryKey: ['events', {max: 3}],
+    queryFn: ({signal, queryKey}) => fetchEvents({signal, ...queryKey[1]}),
     staleTime: 5000, // after what time react-query will send bts fetch request - default: 0, always send bts request
     // gcTime: 1000 <-- how long you want to keep you data to cache - default - 5min
   })
