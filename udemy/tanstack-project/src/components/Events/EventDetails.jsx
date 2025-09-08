@@ -28,7 +28,7 @@ export default function EventDetails() {
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: ['events'],
-        refetchType: 'none',
+        refetchType: 'none',  // Mark the matching queries as stale, but do not automatically trigger a refetch for them.
       });
       navigate('/events');
     }
