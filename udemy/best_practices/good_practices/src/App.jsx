@@ -8,7 +8,11 @@ function App() {
       <h2>Why work with us?</h2>
 
       <Accordion className="accordion">
-          <AccordionItem className="accordion-item" title="we got 20 years of experience">
+          <AccordionItem 
+            className="accordion-item" 
+            title="we got 20 years of experience"
+            id = "experience"
+          >
             <article>
               <p>
                 You can&apos;t go wrong
@@ -18,7 +22,11 @@ function App() {
               </p>
             </article>
           </AccordionItem>
-          <AccordionItem className="accordion-item" title="we are working with local guides">
+          <AccordionItem 
+            className="accordion-item" 
+            title="we are working with local guides"
+            id = "guides"
+          >
             <article>
               <p>We are not doing this along from our ofice</p>      
               <p>Instead, we are working with local guides to ensure a safe pleasant vacation</p>    
