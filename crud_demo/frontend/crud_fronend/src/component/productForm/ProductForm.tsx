@@ -6,6 +6,7 @@ const ProductForm = () => {
 
             <label htmlFor="">Product details:</label>
             <input type="text" />
+            <button type="submit">Submit</button>
         </form>
     )
 }
