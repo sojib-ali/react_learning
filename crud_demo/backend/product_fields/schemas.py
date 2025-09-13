@@ -8,7 +8,7 @@ class ProductBase(BaseModel):
         orm_mode = True
 
 class ProductCreate(ProductBase):
-    id: int
+    pass
 
 class ProductRead(ProductBase):
     id: int
