@@ -6,9 +6,7 @@ const Products = () => {
         <div>
              <Link to="/products/new-product">
                 <button>Add new product</button>
-            </Link>
-            <br />
-            <br />
+            </Link> {" "}
              <Link to="/products/edit-product">
                 <button>Edit product</button>
             </Link>

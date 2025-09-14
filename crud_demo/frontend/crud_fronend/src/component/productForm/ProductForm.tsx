@@ -1,19 +1,26 @@
-import React, { useState } from "react";
+import type React from "react";
 
-type ProductData = {
+export type ProductData = {
     title: string;
     description: string;
 }
 
-const ProductForm = () => {
-    const[inputData, setInputData] = useState <ProductData | null> (null);
+type ProductFormProps = {
+    onSubmit: (data: ProductData) => void;
+    children: React.ReactNode;
+}
+
+
+const ProductForm = ({onSubmit, children}: ProductFormProps) => {
 
     function handleSubmit(e: React.FormEvent<HTMLFormElement>){
         e.preventDefault();
         const formData = new FormData(e.currentTarget)
         const data = Object.fromEntries(formData) as ProductData;
-        setInputData(data);
+
+        onSubmit(data)
         e.currentTarget.reset();
+
     }
 
     return (
@@ -25,17 +32,19 @@ const ProductForm = () => {
 
             <label htmlFor="">Product details:</label>
             <textarea name = "description" /> <br /> <br />
-            <button type="submit">Submit</button>
+            {/* <button type="submit">Submit</button> */}
+
+            {children}
         </form>
 
-       
+{/*        
             {inputData && (
                 <div>
                     <h3>Submitted Data:</h3>
                     <p>Title: {inputData.title}</p>
                     <p>Description: {inputData.description}</p>
                 </div>
-            )}
+            )} */}
 
         
         </>
