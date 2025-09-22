@@ -1,4 +1,5 @@
 'use server'
+import { revalidatePath } from "next/cache";
 import { saveMeal } from "./meals"
 import { RedirectType } from "next/navigation";
 
@@ -6,7 +7,7 @@ function isInvalidText(text){
     return !text || text.trim() === '';
 }
 
-export async function shareMeal(formData){        
+export async function shareMeal(prevState, formData){        
         const meal = {
             title: formData.get('title'),
             summary: formData.get('summary'),
@@ -33,5 +34,6 @@ export async function shareMeal(formData){
         }
     
         await saveMeal(meal);
+        revalidatePath('/meals');
         RedirectType('/meals');
     }
