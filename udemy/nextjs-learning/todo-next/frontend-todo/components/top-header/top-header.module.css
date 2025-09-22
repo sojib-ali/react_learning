@@ -1,0 +1,24 @@
+.header {
+    background-color: #ffffff;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+}
+
+.titleLink {
+    text-decoration: none;
+    color: #1a202c;
+    transition: color 0.2s ease-in-out;
+}
+
+.titleLink:hover {
+    color: #3182ce;
+}
+
+.titleLink h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
