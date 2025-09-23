@@ -1,0 +1,60 @@
+import contextlib
+from fastapi import FastAPI, Depends, HTTPException, status
+from .database import create_all_tables, get_async_session
+from sqlalchemy.ext.asyncio import AsyncSession
+from .models import Task
+from sqlalchemy import select
+from . import schemas
+from collections.abc import Sequence
+
+@contextlib.asynccontextmanager
+async def lifespan(app:FastAPI):
+    await create_all_tables()
+    yield
+
+app = FastAPI(lifespan = lifespan)
+
+@app.get("/")
+def welcome():
+    return {"message": "Hello"}
+
+async def get_task_or_404(
+        id: int, session: AsyncSession = Depends(get_async_session)
+) -> Task:
+    select_query = select(Task).where(Task.id == id) #type ignore
+    result = await session.execute(select_query)
+    task = result.scalar_one_or_none() # type: ignore
+
+    if task is None:
+        raise HTTPException(status_code = status.HTTP_404_NOT_FOUND)
+    
+    return task
+    
+
+
+@app.get("/tasks", response_model = list[schemas.Task])
+async def task_list(
+    session: AsyncSession = Depends(get_async_session),
+) -> Sequence[Task]:
+    select_query = select(Task)
+    result = await session.execute(select_query)
+    task = result.scalars().all()
+
+    return task
+
+@app.get("/task/{id}", response_model = schemas.Task)
+async def get_task(task: Task = Depends(get_task_or_404)) -> Task:
+    return task
+
+    
+    
+
+@app.post("/tasks", response_model = schemas.Task, status_code=status.HTTP_201_CREATED)
+async def create_task(
+    task_create: schemas.TaskCreate, session: AsyncSession = Depends(get_async_session)
+) -> Task:
+    task = Task(**task_create.model_dump())
+    session.add(task)
+    await session.commit()
+    await session.refresh(task)
+    return task
