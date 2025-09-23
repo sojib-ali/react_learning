@@ -13,7 +13,7 @@ export default function TaskPage(){
                         <li key={task.id} className={styles.taskItem}>
                             <span>{task.title}</span>
                             <div className={styles.buttonGroup}>
-                                <EditButton />
+                                <EditButton taskId = {task.id} />
                                 <DeleteButton />
                             </div>
                         </li>
