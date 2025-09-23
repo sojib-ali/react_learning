@@ -2,10 +2,11 @@ import styles from './form.module.css';
 
 interface FormsProps {
     isUpdate?: boolean;
+    taskName?: string;
 }
 
 
-export default function Forms({isUpdate = false}){
+export default function Forms({ isUpdate = false, taskName }: FormsProps) {
 
     const button = isUpdate ? (
         <button className={styles.taskAddButton}>Update Task</button>
@@ -24,6 +25,7 @@ export default function Forms({isUpdate = false}){
                         name="taskName"
                         className={styles.input}
                         placeholder="e.g., Buy groceries"
+                        defaultValue={taskName}
                         required
                     />
                 </div>
