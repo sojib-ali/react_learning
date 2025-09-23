@@ -1,6 +1,5 @@
 import Forms from "@/components/forms/form";
 import styles from '@/app/task-forms/page.module.css';
-import { tasks } from '@/util/task';
 
 interface EditTaskPageProps {
     params: {
@@ -8,11 +7,24 @@ interface EditTaskPageProps {
     };
 }
 
-async function getTaskById(id: string) {
-    // The id from params is a string, but in our mock data it's a number.
-    const taskId = parseInt(id, 10);
-    const task = tasks.find(task => task.id === taskId);
-    return task;
+interface Task {
+    id: number;
+    title: string;
+}
+
+async function getTaskById(id: string): Promise<Task | null> {
+    try {
+        const res = await fetch(`http://127.0.0.1:8000/task/${id}`, {
+            cache: 'no-store' // Ensures we always get the latest data
+        });
+        if (!res.ok) {
+            return null;
+        }
+        return res.json();
+    } catch (error) {
+        console.error("Failed to fetch task:", error);
+        return null;
+    }
 }
 
 export default async function EditTaskPage({ params }: EditTaskPageProps) {
