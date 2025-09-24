@@ -5,11 +5,8 @@ export async function fetchTasks(){
     const response = await fetch(url);
     if(!response.ok){
         const error = new Error('An error occurred while fetching tasks');
-        // error.code = response.status;
-        // error.info = await response.json();
         throw error;
     }
-
     const data = await response.json();
     return data;
 }

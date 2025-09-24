@@ -1,37 +1,55 @@
+'use client';
+
 import styles from './page.module.css';
 import EditButton from "@/components/task-action/edit-btn";
 import DeleteButton from "@/components/task-action/delete-btn";
-import TaskList from '@/util/task-list';
+import useTasks from '@/util/hooks/use-task';
+
 
 interface Task {
     id: number;
     title: string;
 }
 
-// async function getTasks(): Promise<Task[]> {
-//     try {
-//         const res = await fetch('http://127.0.0.1:8000/tasks', {
-//             cache: 'no-store' // Ensures we always get the latest data
-//         });
+export default function TaskPage(){
+   const {
+    data: tasks,
+    isLoading,
+    isError,
+    error,
+  } = useTasks();
 
-//         if (!res.ok) {
-//             throw new Error('Failed to fetch tasks');
-//         }
+  let content;
 
-//         return res.json();
-//     } catch (error) {
-//         console.error('Failed to fetch tasks:', error);
-//         return []; // Return an empty array on error
-//     }
-// }
+  if(isLoading){
+    content = <p>Loading tasks...</p>
+  }
 
-export default async function TaskPage(){
-//     const tasks = await getTasks();
+  if(isError){
+    content = <p>Error fetching task: {error.message}</p>
+  }
+
+  if (tasks) {
+        content = (
+            <ul className={styles.taskList}>
+                {tasks.map((task: Task) => (
+                    <li key={task.id} className={styles.taskItem}>
+                        <span>{task.title}</span>
+                        <div className={styles.buttonGroup}>
+                            <EditButton taskId={String(task.id)} />
+                            <DeleteButton />
+                        </div>
+                    </li>
+                ))}
+            </ul>
+        );
+    }
+
 
     return(
         <main className={styles.container}>
             <h1 className={styles.title}>Your Tasks</h1>
-            <TaskList />
+            {content}
         </main>
     )
 }
