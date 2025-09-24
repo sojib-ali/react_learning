@@ -3,10 +3,11 @@ from fastapi import FastAPI, Depends, HTTPException, status
 from .database import create_all_tables, get_async_session
 from sqlalchemy.ext.asyncio import AsyncSession
 from .models import Task
-from sqlalchemy import select
+from sqlalchemy import select, update
 from . import schemas
 from collections.abc import Sequence
 from fastapi.middleware.cors import CORSMiddleware
+
 
 @contextlib.asynccontextmanager
 async def lifespan(app:FastAPI):
@@ -70,3 +71,21 @@ async def create_task(
     await session.commit()
     await session.refresh(task)
     return task
+
+
+@app.patch("/tasks/{id}", response_model = schemas.Task)
+async def update_task(
+    task_update: schemas.TaskUpdate,
+    task: Task = Depends(get_task_or_404),
+    session: AsyncSession = Depends(get_async_session),
+)-> Task:
+    task_update_dict = task_update.model_dump(exclude_unset=True)
+    for key, value in task_update_dict.items():
+        setattr(task, key, value)
+
+    session.add(task)
+    await session.commit()
+    await session.refresh(task)
+
+    return task
+
