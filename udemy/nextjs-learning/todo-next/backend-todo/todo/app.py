@@ -89,7 +89,7 @@ async def update_task(
 
     return task
 
-@app.delete("/posts/{id}", status_code = status.HTTP_204_NO_CONTENT)
+@app.delete("/tasks/{id}", status_code = status.HTTP_204_NO_CONTENT)
 async def delete_task(
     task: Task = Depends(get_task_or_404),
     session: AsyncSession = Depends(get_async_session),
