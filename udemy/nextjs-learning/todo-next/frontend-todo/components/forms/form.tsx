@@ -3,6 +3,9 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 import styles from './form.module.css';
 import useCreateTask from '@/util/hooks/useCreate-task';
+import useUpdateTask from '@/util/hooks/useUpdate-task';
+import { useParams } from 'next/navigation';
+
 
 interface FormsProps {
     isUpdate?: boolean;
@@ -14,12 +17,13 @@ type Inputs = {
 }
 
 
-export default function Forms({ isUpdate = false, taskName }: FormsProps) {
+export default function Forms({ isUpdate = false, taskName }: FormsProps){
+    const params = useParams();
 
     const {register, handleSubmit, reset} = useForm<Inputs>();
     const {mutate, isPending, isError, error}= useCreateTask();
 
-    const onSubmit: SubmitHandler<Inputs> = (data) => {
+    const onCreate: SubmitHandler<Inputs> = (data) => {
         mutate(data,{
             onSuccess: () => {
                 reset();
@@ -27,8 +31,25 @@ export default function Forms({ isUpdate = false, taskName }: FormsProps) {
         })
     }
 
+
+    const {mutate: updateMutate, isPending: isUpdatePedning} = useUpdateTask();
+    const onUpdate: SubmitHandler<Inputs> = (data) =>{
+        const taskId = params.taskId as string
+        updateMutate({id:taskId, task: data})
+           
+    }
+
+    const onSubmit = isUpdate ? onUpdate: onCreate;
+
     const button = isUpdate ? (
-        <button className={styles.taskAddButton}>Update Task</button>
+        <button 
+            className={styles.taskAddButton} 
+            type='submit'
+            disabled = {isUpdatePedning}
+        >
+            {isUpdatePedning ? "Updating..." : "Update Task"}
+        
+        </button>
     ):(
          <button
             type='submit'

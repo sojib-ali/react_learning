@@ -1,5 +1,9 @@
+'use client'
+
 import Forms from "@/components/forms/form";
 import styles from '@/app/task-forms/page.module.css';
+import useSingleTask from "@/util/hooks/use-singleTask";
+import {use} from "react";
 
 interface EditTaskPageProps {
     params: {
@@ -12,28 +16,31 @@ interface Task {
     title: string;
 }
 
-async function getTaskById(id: string): Promise<Task | null> {
-    try {
-        const res = await fetch(`http://127.0.0.1:8000/task/${id}`, {
-            cache: 'no-store' // Ensures we always get the latest data
-        });
-        if (!res.ok) {
-            return null;
-        }
-        return res.json();
-    } catch (error) {
-        console.error("Failed to fetch task:", error);
-        return null;
-    }
-}
+export default function EditTaskPage({params}: {params: Promise<{taskId: string}>}) {
 
-export default async function EditTaskPage({ params }: EditTaskPageProps) {
-    const task = await getTaskById(params.taskId);
+  const {taskId} = use(params);
 
-    if (!task) {
-        return <div>Task not found.</div>;
-    }
+    const {
+    data: task,
+    isLoading,
+    isError,
+    error,
+  } = useSingleTask(taskId);
 
+
+
+  if(isLoading){
+   return <p>Loading tasks...</p>
+  }
+
+  if(isError){
+    return <p>Error fetching task: {error.message}</p>
+  }
+
+  if(!task){
+    return <p>Task not found</p>
+  }
+    
     return (
         <div className={styles.formContainer}>
             <h2 className={styles.title}>Update Task</h2>

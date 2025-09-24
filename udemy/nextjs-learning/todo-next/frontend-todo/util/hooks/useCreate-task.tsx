@@ -1,3 +1,4 @@
+'use client'
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { redirect, useRouter } from "next/navigation";
 import { createNewTask } from "../http";
