@@ -55,7 +55,7 @@ async def task_list(
 
     return task
 
-@app.get("/task/{id}", response_model = schemas.Task)
+@app.get("/tasks/{id}", response_model = schemas.Task)
 async def get_task(task: Task = Depends(get_task_or_404)) -> Task:
     return task
 
