@@ -2,9 +2,6 @@
 
 import { useQuery } from '@tanstack/react-query';
 import { fetchTasks } from '../http';
-import styles from '@/app/tasks/page.module.css';
-import EditButton from '@/components/task-action/edit-btn';
-import DeleteButton from '@/components/task-action/delete-btn';
 
 interface Task {
   id: number;
