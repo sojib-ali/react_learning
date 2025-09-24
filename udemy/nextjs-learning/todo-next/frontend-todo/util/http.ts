@@ -68,3 +68,22 @@ export async function updateTask({id, task}: UpdateTaskArgs){
     return response.json();
     
 }
+
+export async function deleteTask(id:string | number){
+    const response = await fetch(`${url}/${id}`,{
+        method: 'DELETE',
+    });
+
+    if(!response.ok){
+        const error = new Error('An error occurred while updaing task')
+        throw error;
+    }
+
+    if(response.status === 204){
+        return null;
+    }
+     return await response.json();
+  
+
+    
+}

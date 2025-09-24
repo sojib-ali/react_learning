@@ -38,7 +38,7 @@ export default function TaskPage(){
                         <span>{task.title}</span>
                         <div className={styles.buttonGroup}>
                             <EditButton taskId={String(task.id)} />
-                            <DeleteButton />
+                            <DeleteButton taskId={String(task.id)} />
                         </div>
                     </li>
                 ))}
