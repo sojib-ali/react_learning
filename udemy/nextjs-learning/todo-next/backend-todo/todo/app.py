@@ -3,7 +3,7 @@ from fastapi import FastAPI, Depends, HTTPException, status
 from .database import create_all_tables, get_async_session
 from sqlalchemy.ext.asyncio import AsyncSession
 from .models import Task
-from sqlalchemy import select, update
+from sqlalchemy import select
 from . import schemas
 from collections.abc import Sequence
 from fastapi.middleware.cors import CORSMiddleware
@@ -88,4 +88,14 @@ async def update_task(
     await session.refresh(task)
 
     return task
+
+@app.delete("/posts/{id}", status_code = status.HTTP_204_NO_CONTENT)
+async def delete_task(
+    task: Task = Depends(get_task_or_404),
+    session: AsyncSession = Depends(get_async_session),
+):
+    await session.delete(task)
+    await session.commit()
+
+
 
