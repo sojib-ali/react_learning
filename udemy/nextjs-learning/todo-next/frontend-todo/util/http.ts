@@ -1,4 +1,4 @@
-let url = "http://127.0.0.1:8000/tasks";
+let url = "http://127.0.0.1:8000/todos/";
 
 interface Task{
     title: string;
@@ -40,7 +40,7 @@ export async function createNewTask(task: Task){
 }
 
 export async function fetchTask({id, signal}: {id: number | string; signal?: AbortSignal}){
-    const response = await fetch(`${url}/${id}`, {signal});
+    const response = await fetch(`${url}${id}`, {signal});
 
     if(!response.ok){
         const error = new Error('An error occurred while fetching a single task')
@@ -52,7 +52,7 @@ export async function fetchTask({id, signal}: {id: number | string; signal?: Abo
 }
 
 export async function updateTask({id, task}: UpdateTaskArgs){
-    const response = await fetch(`${url}/${id}`,{
+    const response = await fetch(`${url}${id}/`,{
         method: 'PATCH',
         body: JSON.stringify(task),
         headers:{
@@ -70,7 +70,7 @@ export async function updateTask({id, task}: UpdateTaskArgs){
 }
 
 export async function deleteTask(id:string | number){
-    const response = await fetch(`${url}/${id}`,{
+    const response = await fetch(`${url}${id}/`,{
         method: 'DELETE',
     });
 
